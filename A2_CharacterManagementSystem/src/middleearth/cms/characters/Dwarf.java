@@ -28,6 +28,7 @@ public class Dwarf extends MiddleEarthCharacter{
 		{
 			return false;			
 		}
+		
 		double targetHealth = target.getHealth();
 		double damage = this.getPower();
 		var targetRace = target.getRace();
