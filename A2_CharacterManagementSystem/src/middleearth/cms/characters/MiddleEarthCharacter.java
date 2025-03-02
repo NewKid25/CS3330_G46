@@ -47,6 +47,6 @@ public abstract class MiddleEarthCharacter {
 
 	public void displayInfo()
 	{
-		System.out.println(name+"has "+health +" health and "+power+" power");
+		System.out.println(name+" has "+health +" health and "+power+" power");
 	}
 }
