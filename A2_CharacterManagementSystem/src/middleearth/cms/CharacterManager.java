@@ -7,7 +7,9 @@ public class CharacterManager {
 	private MiddleEarthCharacter[] characters = new MiddleEarthCharacter[size];
 	private int nextOpenPosition =0; //CAN WE HAVE OUR OWN FIELDS/METHODS?
 	
-	
+	/**
+	 * Doubles the size of the character array
+	 */
 	private void extendCharactersArray()
 	{
 		size *= 2;
@@ -19,7 +21,11 @@ public class CharacterManager {
 		}
 		characters=newArray;
 	}
-	
+	/**
+	 * Gets the index of a character in the characters array
+	 * @param character Character to get
+	 * @return index where the character's name was found, -1 if it was unable to find it
+	 */
 	private int getCharacterIndex(MiddleEarthCharacter character)
 	{
 		if(character != null)
@@ -39,6 +45,11 @@ public class CharacterManager {
 		return -1;
 	}
 	
+	/**
+	 * Adds a character to this CharacterManager
+	 * @param c Character to be added
+	 * @return boolean representing whether this operation was successful or not
+	 */
 	public boolean addCharacter(MiddleEarthCharacter c) //WHAT IF MULTPLE OF SAME CHARACTER INSERTED
 	{
 		if(nextOpenPosition == size) //i.e. the array is full
@@ -50,6 +61,11 @@ public class CharacterManager {
 		return true;
 	}
 	
+	/**
+	 * Gets a Character this CharacterManager has
+	 * @param name Name of the character to get
+	 * @return The character that retrieved, or null if the operation failed
+	 */
 	public MiddleEarthCharacter getCharacter(String name)
 	{
 		for(var character : characters)
@@ -62,6 +78,14 @@ public class CharacterManager {
 		return null;
 	}
 	
+	/**
+	 * Sets values of a character that this manager has to the given params
+	 * @param character Character to set the values of
+	 * @param name
+	 * @param health
+	 * @param power
+	 * @return boolean representing whether this operation was successful or not
+	 */
 	public boolean updateCharacter (MiddleEarthCharacter character, String name, int health, int power)
 	{
 		if(character == null || name == null)//bad params
@@ -85,7 +109,11 @@ public class CharacterManager {
 		}
 		return false;
 	}
-	
+	 /**
+	  * Removes a character that this manager has, freeing up the space
+	  * @param character Character to remove
+	  * @return boolean representing whether this operation was successful or not
+	  */
 	public boolean deleteCharacter(MiddleEarthCharacter character)
 	{
 		var characterToDeleteIndex = getCharacterIndex(character);
@@ -103,6 +131,9 @@ public class CharacterManager {
 
 	}
 	
+	/**
+	 * Prints how many characters are in this manager and their information
+	 */
 	public void displayAllCharacters() 
 	{
 		System.out.println("There are " +nextOpenPosition+ " characters in the CharacterManager");

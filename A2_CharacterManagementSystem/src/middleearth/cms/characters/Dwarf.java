@@ -10,6 +10,12 @@ public class Dwarf extends MiddleEarthCharacter{
 	private final List<String> vulnerableEnemies = Arrays.asList("Elf");
 	private final List<String> immuneEnemies = Arrays.asList("Wizard", "Dwarf");
 	
+	/**
+	* Makes a new Dwarf
+	* @param name Name of the creature
+	* @param health health of the creature
+	* @param power amount of damage creature will do in a normal attack
+	*/
 	public Dwarf(String name, double health, double power)
 	{
 		this.setName(name);
@@ -17,11 +23,20 @@ public class Dwarf extends MiddleEarthCharacter{
 		this.setPower(power);
 	}
 	
+	/**
+	* returns String representing race
+	*/
 	public String getRace()
 	{
 		return race;
 	}
 	
+	
+	/**
+	* reduce health of target based on race and this character's power
+	* @param target character that will have it's health reduced
+	* @return boolean describing whether attack did damage or not
+	*/
 	@Override
 	public boolean attack(MiddleEarthCharacter target) {
 		if(target == null)
@@ -38,7 +53,7 @@ public class Dwarf extends MiddleEarthCharacter{
 		}
 		else if (immuneEnemies.contains(targetRace))
 		{
-			damage = 0;
+			return false;
 		}
 
 		target.setHealth(targetHealth-damage);
