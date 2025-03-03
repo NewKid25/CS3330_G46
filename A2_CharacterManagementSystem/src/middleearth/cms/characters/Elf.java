@@ -22,7 +22,7 @@ public class Elf extends MiddleEarthCharacter{
 	}
 	
 	@Override
-	public boolean attack(MiddleEarthCharacter target) //DO ATTACKS NEED DIFFERENT INTERAL LOGIC?
+	public boolean attack(MiddleEarthCharacter target)
 	{
 		if(target == null)
 		{

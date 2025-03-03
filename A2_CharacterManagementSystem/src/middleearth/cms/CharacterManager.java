@@ -5,7 +5,7 @@ import middleearth.cms.characters.MiddleEarthCharacter;
 public class CharacterManager {
 	private int size =5;
 	private MiddleEarthCharacter[] characters = new MiddleEarthCharacter[size];
-	private int nextOpenPosition =0; //CAN WE HAVE OUR OWN FIELDS/METHODS?
+	private int nextOpenPosition =0; 
 	
 	/**
 	 * Doubles the size of the character array
@@ -50,13 +50,13 @@ public class CharacterManager {
 	 * @param c Character to be added
 	 * @return boolean representing whether this operation was successful or not
 	 */
-	public boolean addCharacter(MiddleEarthCharacter c) //WHAT IF MULTPLE OF SAME CHARACTER INSERTED
+	public boolean addCharacter(MiddleEarthCharacter c) 
 	{
 		if(nextOpenPosition == size) //i.e. the array is full
 		{
 			extendCharactersArray();
 		}
-		characters[nextOpenPosition] = c; //SHOULD THIS BE A COPY?
+		characters[nextOpenPosition] = c;
 		nextOpenPosition++;
 		return true;
 	}
