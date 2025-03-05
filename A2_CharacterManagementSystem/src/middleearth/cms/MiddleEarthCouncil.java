@@ -1,32 +1,26 @@
 package middleearth.cms;
 
+/**
+ * MiddleEarthCouncil getinstance:
+ * CharacterManager getmanagerinstance:
+ */
 public class MiddleEarthCouncil {
 	
-	private static MiddleEarthCouncil instance1;
-	String character;
+	private static MiddleEarthCouncil instance;
 	
-	MiddleEarthCouncil (String character){
-		this.character = character;
+	public static MiddleEarthCouncil getinstance() {
+		if(instance == null) {
+			instance = new MiddleEarthCouncil();
 		}
+		return instance;
+		}
+
+	private static CharacterManager managerinstance;
 	
-	public static MiddleEarthCouncil getinstance(String character) {
-		if(instance1 == null) {
-			instance1 = new MiddleEarthCouncil(character);
+	public static CharacterManager getmanagerinstance() {
+		if(managerinstance == null) {
+			managerinstance = new CharacterManager();
 		}
-			return instance1;
-}
-	CharacterManager getCharacterManager(){
-		private static MiddleEarthCouncil instance;
-		String manager;
-		
-		private MiddleEarthCouncil instance2(String manager){
-			this.manager = manager;
-			}
-		public static MiddleEarthCouncil getinstance1(String manager) {
-			if(instance1 == null) {
-				instance1 = new MiddleEarthCouncil(manager);
-				}
-			return instance1;
-	}
-		
+		return managerinstance;
+		}
 }
