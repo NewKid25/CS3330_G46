@@ -15,9 +15,9 @@ public class MiddleEarthCouncil {
 		return instance;
 		}
 
-	private static CharacterManager managerinstance;
+	private CharacterManager managerinstance;
 	
-	public static CharacterManager getmanagerinstance() {
+	public CharacterManager getmanagerinstance() {
 		if(managerinstance == null) {
 			managerinstance = new CharacterManager();
 		}
