@@ -31,17 +31,17 @@ public class MiddleEarthApp {
 			if(scanner.nextLine() == "name") {
 				System.out.println("New hero name: ");
 				String newname = scanner.nextLine();
-				council.getmanagerinstance().updateCharacter(character, newname, character.getHealth(), character.getPower());
+				council.getmanagerinstance().updateCharacter(character, newname, (int)character.getHealth(), (int)character.getPower());
 			}
 			if(scanner.nextLine() == "hp") {
 				System.out.println("New hero hp: ");
-				String hp = scanner.nextLine();
-				council.getmanagerinstance().updateCharacter(character, character.getName(), hp, character.getPower());
+				var hp = Integer.parseInt(scanner.nextLine());
+				council.getmanagerinstance().updateCharacter(character, character.getName(), hp, (int)character.getPower());
 			}
 			if(scanner.nextLine() == "power") {
 				System.out.println("New hero power: ");
-				String power = scanner.nextLine();
-				council.getmanagerinstance().updateCharacter(character, character.getName(),character.getHealth(), power);
+				var power = Integer.parseInt(scanner.nextLine());
+				council.getmanagerinstance().updateCharacter(character, character.getName(),(int)character.getHealth(), power);
 			}
 			else {
 				break;
