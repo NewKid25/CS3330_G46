@@ -1,5 +1,5 @@
 package midi.composition.factory;
 
-public class Note {
+public class LegatoMidiEventFactory {
 
 }
