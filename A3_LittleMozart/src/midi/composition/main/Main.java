@@ -13,6 +13,7 @@ import midi.composition.factory.MidiEventFactory;
 import midi.composition.data.MidiCsvParser;
 import midi.composition.data.MidiEventData;
 import midi.composition.strategy.*;
+import midi.composition.strategyclasses.HigherPitchStrategy;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,22 +30,22 @@ public class Main {
             Sequence sequence = new Sequence(Sequence.PPQ, 384);
             Track track = sequence.createTrack();
             MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract();
-            // MidiEventFactoryAbstract factoryAbstract = new LegatoMidiEventFactoryAbstract();
-            // MidiEventFactoryAbstract factoryAbstract = new StaccatoMidiEventFactoryAbstract();
+//            MidiEventFactoryAbstract factoryAbstract = new LegatoMidiEventFactoryAbstract();
+//            MidiEventFactoryAbstract factoryAbstract = new StaccatoMidiEventFactoryAbstract();
             MidiEventFactory factory = factoryAbstract.createFactory();
             // Choose an instrument strategy (e.g., Trumpet, BassGuitar, Piano)
-            InstrumentStrategy instrumentStrategy = new ElectricBassGuitarStrategy();
+            InstrumentStrategy instrumentStrategy = new AcousticGrandPianoStrategy();
             instrumentStrategy.applyInstrument(track, 0);
             instrumentStrategy = new TrumpetStrategy();
             instrumentStrategy.applyInstrument(track, 1);
             // Choose a pitch strategy (e.g., HigherPitch, LowerPitch)
-//            PitchStrategy pitchStrategy = new HigherPitchStrategy();
+            PitchStrategy pitchStrategy = new HigherPitchStrategy();
             for (MidiEventData event : midiEvents) {
-//                int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
-                int modifiedNote =event.getNote();
+                int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
+                modifiedNote =event.getNote();
 
                 // call this as much as you want if you want to get a higher pitch
-//                modifiedNote = pitchStrategy.modifyPitch(modifiedNote);
+                modifiedNote = pitchStrategy.modifyPitch(modifiedNote);
                 if (event.getNoteOnOff() == ShortMessage.NOTE_ON) {
                     track.add(factory.createNoteOn(event.getStartEndTick(),
                             modifiedNote,

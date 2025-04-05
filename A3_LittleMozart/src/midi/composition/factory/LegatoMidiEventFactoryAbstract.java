@@ -5,7 +5,7 @@ import javax.sound.midi.ShortMessage;
 
 import midi.composition.exception.InvalidMidiDataException;
 
-public class LegatoMidiEventFactory implements MidiEventFactory{
+public class LegatoMidiEventFactoryAbstract implements MidiEventFactory{
 
 	@Override
 	public MidiEvent createNoteOn(int tick, int note, int velocity, int channel) throws InvalidMidiDataException {
