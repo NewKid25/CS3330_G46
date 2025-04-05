@@ -13,7 +13,7 @@ public class ElectricBassGuitarStrategy implements InstrumentStrategy{
 	public void applyInstrument(Track track, int channel) {
         try {        	
         	ShortMessage msg = new ShortMessage();
-        	msg.setMessage(ShortMessage.PROGRAM_CHANGE, channel, instrumentNumber, 0);
+        	msg.setMessage(ShortMessage.PROGRAM_CHANGE, channel, instrumentNumber, 100);
         	MidiEvent event = new MidiEvent(msg, 0);
         	track.add(event);
         	

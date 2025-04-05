@@ -1,5 +1,6 @@
 package midi.composition.data;
 
+import javax.sound.midi.ShortMessage;
 
 public class MidiEventData {
     private int startEndTick, velocity, note, channel, noteOnOff;
@@ -49,7 +50,7 @@ public class MidiEventData {
 	}
 
 	public int getNoteOnOff() {
-		return noteOnOff;
+		return noteOnOff*144;//144 is the code for ShortMessage.NOTE_ON
 	}
 
 	public void setNoteOnOff(int noteOnOff) {
