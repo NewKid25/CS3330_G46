@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class MidiCsvParser {
 	
-	public List<MidiEventData> parseCsv (String filePath)
+	public static List<MidiEventData> parseCsv (String filePath)
 	{
 	    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) 
 	    {
@@ -37,7 +37,7 @@ public class MidiCsvParser {
 	    
 	}
 	
-	private MidiEventData lineToMidiEventData(String[] values)
+	private static MidiEventData lineToMidiEventData(String[] values)
 	{
 		int lineLength =6; //also number of params MidiEventData constructor takes
 		int[] intValues = new int[lineLength];
