@@ -5,9 +5,9 @@ import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiEvent;
 import javax.sound.midi.ShortMessage;
 
-public class ElectricBassGuitarStrategy implements InstrumentStrategy{
+public class AcousticGrandPianoStrategy implements InstrumentStrategy{
 
-	int instrumentNumber = 33; 
+	int instrumentNumber = 0;
 	
 	@Override
 	public void applyInstrument(Track track, int channel) {
