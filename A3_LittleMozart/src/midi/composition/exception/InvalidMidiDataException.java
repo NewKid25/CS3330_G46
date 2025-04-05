@@ -1,4 +1,4 @@
-package midi.composition.factory;
+package midi.composition.exception;
 
 public class InvalidMidiDataException extends Exception {
 

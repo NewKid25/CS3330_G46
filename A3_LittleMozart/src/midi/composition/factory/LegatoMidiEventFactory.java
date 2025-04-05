@@ -3,6 +3,8 @@ package midi.composition.factory;
 import javax.sound.midi.MidiEvent;
 import javax.sound.midi.ShortMessage;
 
+import midi.composition.exception.InvalidMidiDataException;
+
 public class LegatoMidiEventFactory implements MidiEventFactory{
 
 	@Override
