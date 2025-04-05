@@ -6,50 +6,58 @@ import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
 import javax.sound.midi.Track;
 
+import midi.composition.data.MidiCsvParser;
 import midi.composition.data.MidiEventData;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            List<MidiEventData> midiEvents = MidiCsvParser.parseCsv("./files/mysterysong.csv");
-            Sequence sequence = new Sequence(Sequence.PPQ, 384);
-            Track track = sequence.createTrack();
-            MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract();
-            // MidiEventFactoryAbstract factoryAbstract = new LegatoMidiEventFactoryAbstract();
-            // MidiEventFactoryAbstract factoryAbstract = new StaccatoMidiEventFactoryAbstract();
-            MidiEventFactory factory = factoryAbstract.createFactory();
-            // Choose an instrument strategy (e.g., Trumpet, BassGuitar, Piano)
-            InstrumentStrategy instrumentStrategy = new ElectricBassGuitarStrategy();
-            instrumentStrategy.applyInstrument(track, 0);
-            instrumentStrategy = new TrumpetStrategy();
-            instrumentStrategy.applyInstrument(track, 1);
-            // Choose a pitch strategy (e.g., HigherPitch, LowerPitch)
-            PitchStrategy pitchStrategy = new HigherPitchStrategy();
-            for (MidiEventData event : midiEvents) {
-                int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
-                // call this as much as you want if you want to get a higher pitch
-                modifiedNote = pitchStrategy.modifyPitch(modifiedNote);
-                if (event.getNoteOnOff() == ShortMessage.NOTE_ON) {
-                    track.add(factory.createNoteOn(event.getStartEndTick(),
-                            modifiedNote,
-                            event.getVelocity(),
-                            event.getChannel()));
-                } else {
-                    track.add(factory.createNoteOff(event.getStartEndTick(), modifiedNote, event.getChannel()));
-                }
-            }
-            // Playing the sequence
-            Sequencer sequencer = MidiSystem.getSequencer();
-            sequencer.open();
-            sequencer.setSequence(sequence);
-            sequencer.start();
-            while (sequencer.isRunning() | sequencer.isOpen()) {
-                Thread.sleep(100);
-            }
-            Thread.sleep(500);
-            sequencer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+    	String songPath = "./src/midi/composition/input/mystery_song.csv"; //path is relative to root of project, not this file
+    	var parser = new MidiCsvParser();
+    	var midiList = parser.parseCsv(songPath);
+        for (var midiData : midiList) {
+            System.out.println(midiData.toString());
         }
     }
+//        try {
+//            List<MidiEventData> midiEvents = MidiCsvParser.parseCsv("./files/mysterysong.csv");
+//            Sequence sequence = new Sequence(Sequence.PPQ, 384);
+//            Track track = sequence.createTrack();
+//            MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract();
+//            // MidiEventFactoryAbstract factoryAbstract = new LegatoMidiEventFactoryAbstract();
+//            // MidiEventFactoryAbstract factoryAbstract = new StaccatoMidiEventFactoryAbstract();
+//            MidiEventFactory factory = factoryAbstract.createFactory();
+//            // Choose an instrument strategy (e.g., Trumpet, BassGuitar, Piano)
+//            InstrumentStrategy instrumentStrategy = new ElectricBassGuitarStrategy();
+//            instrumentStrategy.applyInstrument(track, 0);
+//            instrumentStrategy = new TrumpetStrategy();
+//            instrumentStrategy.applyInstrument(track, 1);
+//            // Choose a pitch strategy (e.g., HigherPitch, LowerPitch)
+//            PitchStrategy pitchStrategy = new HigherPitchStrategy();
+//            for (MidiEventData event : midiEvents) {
+//                int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
+//                // call this as much as you want if you want to get a higher pitch
+//                modifiedNote = pitchStrategy.modifyPitch(modifiedNote);
+//                if (event.getNoteOnOff() == ShortMessage.NOTE_ON) {
+//                    track.add(factory.createNoteOn(event.getStartEndTick(),
+//                            modifiedNote,
+//                            event.getVelocity(),
+//                            event.getChannel()));
+//                } else {
+//                    track.add(factory.createNoteOff(event.getStartEndTick(), modifiedNote, event.getChannel()));
+//                }
+//            }
+//            // Playing the sequence
+//            Sequencer sequencer = MidiSystem.getSequencer();
+//            sequencer.open();
+//            sequencer.setSequence(sequence);
+//            sequencer.start();
+//            while (sequencer.isRunning() | sequencer.isOpen()) {
+//                Thread.sleep(100);
+//            }
+//            Thread.sleep(500);
+//            sequencer.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

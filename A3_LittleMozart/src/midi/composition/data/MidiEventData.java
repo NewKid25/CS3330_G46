@@ -14,6 +14,7 @@ public class MidiEventData {
         this.instrument = instrument;
         this.noteOnOff = noteOnOff;
     }
+    
 
 	public int getStartEndTick() {
 		return startEndTick;
@@ -62,5 +63,13 @@ public class MidiEventData {
 	public void setInstrument(int instrument) {
 		this.instrument = instrument;
 	}
+
+
+	@Override
+	public String toString() {
+		return "MidiEventData [startEndTick=" + startEndTick + ", velocity=" + velocity + ", note=" + note
+				+ ", channel=" + channel + ", noteOnOff=" + noteOnOff + ", instrument=" + instrument + "]";
+	}
     
+
 }
