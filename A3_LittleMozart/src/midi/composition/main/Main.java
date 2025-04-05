@@ -25,7 +25,7 @@ public class Main {
 //        }
 //    }
         try {
-            List<MidiEventData> midiEvents = MidiCsvParser.parseCsv("./files/mysterysong.csv");
+            List<MidiEventData> midiEvents = MidiCsvParser.parseCsv("./src/midi/composition/input/mystery_song.csv");
             Sequence sequence = new Sequence(Sequence.PPQ, 384);
             Track track = sequence.createTrack();
             MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract();
@@ -60,6 +60,7 @@ public class Main {
             sequencer.setSequence(sequence);
             sequencer.start();
             while (sequencer.isRunning() | sequencer.isOpen()) {
+            	System.out.println("sequencer running");
                 Thread.sleep(100);
             }
             Thread.sleep(500);

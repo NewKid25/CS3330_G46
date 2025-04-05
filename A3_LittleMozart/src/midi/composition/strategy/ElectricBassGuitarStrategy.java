@@ -5,7 +5,7 @@ import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiEvent;
 import javax.sound.midi.ShortMessage;
 
-public class ElectricBassGuitarStrategy implements InstrumentStrategyInterface{
+public class ElectricBassGuitarStrategy implements InstrumentStrategy{
 
 	int instrumentNumber = 33; 
 	

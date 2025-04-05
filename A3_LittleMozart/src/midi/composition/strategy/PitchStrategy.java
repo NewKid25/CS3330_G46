@@ -1,5 +1,5 @@
 package midi.composition.strategy;
 
-public interface PitchStrategyInterface {
+public interface PitchStrategy {
 	int modifyPitch(int note);
 }
