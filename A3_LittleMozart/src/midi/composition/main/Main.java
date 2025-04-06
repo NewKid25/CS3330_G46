@@ -14,6 +14,8 @@ import midi.composition.data.MidiCsvParser;
 import midi.composition.data.MidiEventData;
 import midi.composition.strategy.*;
 import midi.composition.strategyclasses.HigherPitchStrategy;
+import midi.composition.factory.LegatoMidiEventFactory;
+import midi.composition.factory.LegatoMidiEventFactoryAbstract;
 
 public class Main {
     public static void main(String[] args) {
