@@ -1,6 +1,6 @@
-package midi.composition.strategyclasses;
+package midi.composition.strategy;
 
-import midi.composition.strategy.PitchStrategy;
+import midi.composition.strategy.interfaces.PitchStrategy;
 
 public class LowerPitchStrategy implements PitchStrategy{
 

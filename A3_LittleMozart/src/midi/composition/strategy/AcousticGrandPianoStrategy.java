@@ -1,6 +1,9 @@
 package midi.composition.strategy;
 
 import javax.sound.midi.Track;
+
+import midi.composition.strategy.interfaces.InstrumentStrategy;
+
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiEvent;
 import javax.sound.midi.ShortMessage;

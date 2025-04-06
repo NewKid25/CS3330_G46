@@ -13,29 +13,22 @@ import midi.composition.factory.*;
 import midi.composition.data.MidiCsvParser;
 import midi.composition.data.MidiEventData;
 import midi.composition.strategy.*;
-import midi.composition.strategyclasses.HigherPitchStrategy;
+import midi.composition.strategy.interfaces.InstrumentStrategy;
+import midi.composition.strategy.interfaces.PitchStrategy;
 import midi.composition.factory.LegatoMidiEventFactory;
 import midi.composition.factory.LegatoMidiEventFactoryAbstract;
 
 public class Main {
     public static void main(String[] args) {
-    	//Parser Testin
-//    	String songPath = "./src/midi/composition/input/mystery_song.csv"; //path is relative to root of project, not this file
-//    	var parser = new MidiCsvParser();
-//    	var midiList = parser.parseCsv(songPath);
-//        for (var midiData : midiList) {
-//            System.out.println(midiData.toString());
-//        }
-//    }
         try {
             List<MidiEventData> midiEvents = MidiCsvParser.parseCsv("./src/midi/composition/input/mystery_song.csv");
             Sequence sequence = new Sequence(Sequence.PPQ, 384);
             Track track = sequence.createTrack();
-//            MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract();
-            MidiEventFactoryAbstract factoryAbstract = new LegatoMidiEventFactoryAbstract();
+            MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract();
+//            MidiEventFactoryAbstract factoryAbstract = new LegatoMidiEventFactoryAbstract();
 //            MidiEventFactoryAbstract factoryAbstract = new StaccatoMidiEventFactoryAbstract();
             MidiEventFactory factory = factoryAbstract.createFactory();
-            // Choose an instrument strategy (e.g., Trumpet, BassGuitar, Piano)
+            //apply an instrument to each channel in the csv
             InstrumentStrategy instrumentStrategy = new ElectricBassGuitarStrategy();
             instrumentStrategy.applyInstrument(track, 0);
             instrumentStrategy = new TrumpetStrategy();
@@ -48,19 +41,11 @@ public class Main {
             instrumentStrategy.applyInstrument(track, 4);
 
 
-            
-//        	ShortMessage msg = new ShortMessage();
-//        	msg.setMessage(ShortMessage.PROGRAM_CHANGE, 0, 33, 100);
-//        	MidiEvent eventTemp = new MidiEvent(msg, 0);
-//        	track.add(eventTemp);
-//             Choose a pitch strategy (e.g., HigherPitch, LowerPitch)
+//             Choose a pitch strategy ( HigherPitch or LowerPitch)
             PitchStrategy pitchStrategy = new HigherPitchStrategy();
             for (MidiEventData event : midiEvents) {
                 int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
-//                modifiedNote =event.getNote();
 
-                // call this as much as you want if you want to get a higher pitch
-                modifiedNote = pitchStrategy.modifyPitch(modifiedNote);
                 if (event.getNoteOnOff() == ShortMessage.NOTE_ON) {
                     track.add(factory.createNoteOn(event.getStartEndTick(),
                             modifiedNote,

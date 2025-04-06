@@ -1,9 +1,8 @@
 package midi.composition.factory;
 
+import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiEvent;
 import javax.sound.midi.ShortMessage;
-
-import midi.composition.exception.InvalidMidiDataException;
 
 public class StaccatoMidiEventFactory implements MidiEventFactory{
 
@@ -12,7 +11,7 @@ public class StaccatoMidiEventFactory implements MidiEventFactory{
 		ShortMessage message = new ShortMessage();
 		try {
 			message.setMessage(ShortMessage.NOTE_ON, channel, note, velocity);
-		} catch (javax.sound.midi.InvalidMidiDataException e) {
+		} catch (InvalidMidiDataException e) {
 			e.printStackTrace();
 		}
 		MidiEvent event = new MidiEvent(message, tick);
@@ -24,7 +23,7 @@ public class StaccatoMidiEventFactory implements MidiEventFactory{
 		ShortMessage message = new ShortMessage();
 		try {
 			message.setMessage(ShortMessage.NOTE_OFF, channel, note, 0);
-		} catch (javax.sound.midi.InvalidMidiDataException e) {
+		} catch (InvalidMidiDataException e) {
 			e.printStackTrace();
 		}
 		MidiEvent event = new MidiEvent(message, tick-120);

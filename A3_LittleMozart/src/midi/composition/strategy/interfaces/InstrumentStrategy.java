@@ -1,4 +1,4 @@
-package midi.composition.strategy;
+package midi.composition.strategy.interfaces;
 
 import javax.sound.midi.Track;
 
