@@ -18,6 +18,8 @@ import midi.composition.strategy.interfaces.PitchStrategy;
 import midi.composition.factory.LegatoMidiEventFactory;
 import midi.composition.factory.LegatoMidiEventFactoryAbstract;
 
+//GUESS FOR MYSTERY SONG: "bad guy" by Billie Eilish 
+
 public class Main {
     public static void main(String[] args) {
         try {
@@ -61,7 +63,6 @@ public class Main {
             sequencer.setSequence(sequence);
             sequencer.start();
             while (sequencer.isRunning() | sequencer.isOpen()) {
-            	System.out.println("sequencer running");
                 Thread.sleep(100);
             }
             Thread.sleep(500);

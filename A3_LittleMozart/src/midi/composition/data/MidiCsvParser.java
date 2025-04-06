@@ -12,6 +12,12 @@ import java.util.Scanner;
 
 public class MidiCsvParser {
 	
+	/**
+	 * @param filePath path to the csv to be parse
+	 * @return all the rows in the csv as list of MidiEventData
+	 * This method parses a properly formated csv to MidiEventData which can be played in sequencer
+	 */
+	
 	public static List<MidiEventData> parseCsv (String filePath)
 	{
 	    try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) 
@@ -37,6 +43,10 @@ public class MidiCsvParser {
 	    
 	}
 	
+	/**
+	 * @param values array of data parsed from csv must be in [tick, on/off, channel, note, velocity]
+	 * @return values mapped to MidiEvent Data
+	 */
 	private static MidiEventData lineToMidiEventData(String[] values)
 	{
 		int lineLength =6; //also number of params MidiEventData constructor takes
