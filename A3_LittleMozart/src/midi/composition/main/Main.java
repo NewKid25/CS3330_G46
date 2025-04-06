@@ -1,6 +1,8 @@
 package midi.composition.main;
 
 import java.util.List;
+
+import javax.sound.midi.MidiEvent;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
@@ -37,15 +39,28 @@ public class Main {
             MidiEventFactoryAbstract factoryAbstract = new StaccatoMidiEventFactoryAbstract();
             MidiEventFactory factory = factoryAbstract.createFactory();
             // Choose an instrument strategy (e.g., Trumpet, BassGuitar, Piano)
-            InstrumentStrategy instrumentStrategy = new AcousticGrandPianoStrategy();
+            InstrumentStrategy instrumentStrategy = new ElectricBassGuitarStrategy();
             instrumentStrategy.applyInstrument(track, 0);
             instrumentStrategy = new TrumpetStrategy();
             instrumentStrategy.applyInstrument(track, 1);
-            // Choose a pitch strategy (e.g., HigherPitch, LowerPitch)
+            instrumentStrategy = new AcousticGrandPianoStrategy();
+            instrumentStrategy.applyInstrument(track, 2);
+            instrumentStrategy = new SaxStrategy();
+            instrumentStrategy.applyInstrument(track, 3);
+            instrumentStrategy = new BassoonStrategy();
+            instrumentStrategy.applyInstrument(track, 4);
+
+
+            
+//        	ShortMessage msg = new ShortMessage();
+//        	msg.setMessage(ShortMessage.PROGRAM_CHANGE, 0, 33, 100);
+//        	MidiEvent eventTemp = new MidiEvent(msg, 0);
+//        	track.add(eventTemp);
+//             Choose a pitch strategy (e.g., HigherPitch, LowerPitch)
             PitchStrategy pitchStrategy = new HigherPitchStrategy();
             for (MidiEventData event : midiEvents) {
                 int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
-                modifiedNote =event.getNote();
+//                modifiedNote =event.getNote();
 
                 // call this as much as you want if you want to get a higher pitch
                 modifiedNote = pitchStrategy.modifyPitch(modifiedNote);
