@@ -5,7 +5,7 @@ import javax.sound.midi.ShortMessage;
 
 import midi.composition.exception.InvalidMidiDataException;
 
-public class StaccatoMidiEventFactory implements MidiEventFactory{
+public class LegatoMidiEventFactory implements MidiEventFactory{
 
 	@Override
 	public MidiEvent createNoteOn(int tick, int note, int velocity, int channel) throws InvalidMidiDataException {
@@ -27,8 +27,8 @@ public class StaccatoMidiEventFactory implements MidiEventFactory{
 		} catch (javax.sound.midi.InvalidMidiDataException e) {
 			e.printStackTrace();
 		}
-		MidiEvent event = new MidiEvent(message, tick-120);
+		MidiEvent event = new MidiEvent(message, tick+80);
 		return event;
 	}
-
+	
 }
