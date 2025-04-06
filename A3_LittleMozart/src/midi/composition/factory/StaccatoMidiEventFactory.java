@@ -7,6 +7,13 @@ import javax.sound.midi.ShortMessage;
 public class StaccatoMidiEventFactory implements MidiEventFactory{
 
 	@Override
+	/**
+	 * @param tick- tick speed
+	 * @param note- music note
+	 * @param velocity- note velocity
+	 * @param channel- note channel
+	 * this method makes a staccato note play
+	 */
 	public MidiEvent createNoteOn(int tick, int note, int velocity, int channel) throws InvalidMidiDataException {
 		ShortMessage message = new ShortMessage();
 		try {
@@ -19,6 +26,13 @@ public class StaccatoMidiEventFactory implements MidiEventFactory{
 	}
 
 	@Override
+	/**
+	 * @param tick- tick speed
+	 * @param note- music note
+	 * @param velocity- note velocity
+	 * @param channel- note channel
+	 * this method turns off a stacatto note
+	 */
 	public MidiEvent createNoteOff(int tick, int note, int channel) throws InvalidMidiDataException {
 		ShortMessage message = new ShortMessage();
 		try {

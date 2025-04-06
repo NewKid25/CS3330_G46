@@ -9,6 +9,13 @@ import javax.sound.midi.ShortMessage;
 public class LegatoMidiEventFactory implements MidiEventFactory{
 
 	@Override
+	/**
+	 * @param tick- tick speed
+	 * @param note- music note
+	 * @param velocity- note velocity
+	 * @param channel- note channel
+	 * this method makes a legato note play
+	 */
 	public MidiEvent createNoteOn(int tick, int note, int velocity, int channel) throws InvalidMidiDataException {
 		ShortMessage message = new ShortMessage();
 		try {
@@ -21,6 +28,13 @@ public class LegatoMidiEventFactory implements MidiEventFactory{
 	}
 
 	@Override
+	/**
+	 * @param tick- tick speed
+	 * @param note- music note
+	 * @param velocity- note velocity
+	 * @param channel- note channel
+	 * this method makes a legato note turn off
+	 */
 	public MidiEvent createNoteOff(int tick, int note, int channel) throws InvalidMidiDataException {
 		ShortMessage message = new ShortMessage();
 		try {

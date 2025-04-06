@@ -13,6 +13,9 @@ public class BassoonStrategy implements InstrumentStrategy{
 	int instrumentNumber = 71;
 	
 	@Override
+	/**
+	 * Sets the instrument type to Bassoon
+	 */
 	public void applyInstrument(Track track, int channel) {
         try {        	
         	ShortMessage msg = new ShortMessage();

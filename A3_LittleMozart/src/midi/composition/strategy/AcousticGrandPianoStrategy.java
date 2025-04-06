@@ -13,6 +13,9 @@ public class AcousticGrandPianoStrategy implements InstrumentStrategy{
 	int instrumentNumber = 0;
 	
 	@Override
+	/**
+	 * Sets the instrument type to Acoustic Grand Piano
+	 */
 	public void applyInstrument(Track track, int channel) {
         try {        	
         	ShortMessage msg = new ShortMessage();

@@ -13,6 +13,9 @@ public class SaxStrategy implements InstrumentStrategy{
 	int instrumentNumber = 65;
 	
 	@Override
+	/**
+	 * Sets the instrument type to Saxophone
+	 */
 	public void applyInstrument(Track track, int channel) {
         try {        	
         	ShortMessage msg = new ShortMessage();

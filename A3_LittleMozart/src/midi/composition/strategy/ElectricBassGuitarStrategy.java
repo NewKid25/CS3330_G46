@@ -13,6 +13,9 @@ public class ElectricBassGuitarStrategy implements InstrumentStrategy{
 	int instrumentNumber = 34; 
 	
 	@Override
+	/**
+	 * Sets the instrument type to Electric Bass Guitar
+	 */
 	public void applyInstrument(Track track, int channel) {
         try {        	
         	ShortMessage msg = new ShortMessage();
