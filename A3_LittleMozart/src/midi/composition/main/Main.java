@@ -8,12 +8,15 @@ import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Track;
 
 import midi.composition.factory.MidiEventFactoryAbstract;
+import midi.composition.factory.StaccatoMidiEventFactoryAbstract;
 import midi.composition.factory.StandardMidiEventFactoryAbstract;
 import midi.composition.factory.MidiEventFactory;
 import midi.composition.data.MidiCsvParser;
 import midi.composition.data.MidiEventData;
 import midi.composition.strategy.*;
 import midi.composition.strategyclasses.HigherPitchStrategy;
+import midi.composition.factory.LegatoMidiEventFactory;
+import midi.composition.factory.LegatoMidiEventFactoryAbstract;
 
 public class Main {
     public static void main(String[] args) {
@@ -29,9 +32,9 @@ public class Main {
             List<MidiEventData> midiEvents = MidiCsvParser.parseCsv("./src/midi/composition/input/mystery_song.csv");
             Sequence sequence = new Sequence(Sequence.PPQ, 384);
             Track track = sequence.createTrack();
-            MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract();
+//            MidiEventFactoryAbstract factoryAbstract = new StandardMidiEventFactoryAbstract();
 //            MidiEventFactoryAbstract factoryAbstract = new LegatoMidiEventFactoryAbstract();
-//            MidiEventFactoryAbstract factoryAbstract = new StaccatoMidiEventFactoryAbstract();
+            MidiEventFactoryAbstract factoryAbstract = new StaccatoMidiEventFactoryAbstract();
             MidiEventFactory factory = factoryAbstract.createFactory();
             // Choose an instrument strategy (e.g., Trumpet, BassGuitar, Piano)
             InstrumentStrategy instrumentStrategy = new AcousticGrandPianoStrategy();
