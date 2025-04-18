@@ -62,7 +62,7 @@ public class Main {
             sequencer.open();
             sequencer.setSequence(sequence);
             sequencer.start();
-            while (sequencer.isRunning() | sequencer.isOpen()) {
+            while (sequencer.isRunning()) {
                 Thread.sleep(100);
             }
             Thread.sleep(500);
