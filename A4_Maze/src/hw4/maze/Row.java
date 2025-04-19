@@ -24,5 +24,17 @@ public class Row {
 		this.cells = cells;
 	}
 	
-	
+	public int FindCellIndex(Cell cellToFind)
+	{
+		var cellsArray = cells.toArray();
+		
+		for(int i =0; i< cellsArray.length; i++)
+		{
+			if (cellsArray[i] == cellToFind)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
 }

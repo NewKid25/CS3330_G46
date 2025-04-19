@@ -80,8 +80,4 @@ public class Cell {
 			this.down = down;
 		}
 	}
-	
-
-	
-
 }

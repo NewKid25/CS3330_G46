@@ -23,4 +23,17 @@ public class Grid {
 		return "Grid [rows=" + rows + "]";
 	}
 	
+	public int FindRowIndex(Row rowToFind)
+	{
+		var rowsArray = rows.toArray();
+		
+		for(int i =0; i< rowsArray.length; i++)
+		{
+			if (rowsArray[i] == rowToFind)
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
 }
