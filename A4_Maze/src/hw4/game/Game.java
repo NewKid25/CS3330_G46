@@ -11,29 +11,54 @@ public class Game {
 
 	private Grid grid;
 
+	/**
+	 * constructor that sets the grid
+	 * @param grid
+	 */
 	public Game(Grid grid) {
 		super();
 		this.grid = grid;
 	}
-
+	/**
+	 * sets the grid size to a random size
+	 * @param gridSize
+	 */
 	public Game(int gridSize)
 	{
 		this.grid = createRandomGrid(gridSize);
 	}
 	
+	/**
+	 * returns the grid
+	 * @return
+	 */
 	public Grid getGrid() {
 		return grid;
 	}
-
+	
+	/**
+	 * sets the grid
+	 * @param grid = random grid
+	 */
 	public void setGrid(Grid grid) {
 		this.grid = grid;
 	}
 
+
 	@Override
+	/**
+	 * toString function for grid
+	 */
 	public String toString() {
 		return "Game [grid=" + grid + "]";
 	}
 	
+	/**
+	 * This method starts the game and then checks to see if the agent has escaped
+	 * @param movement
+	 * @param player
+	 * @return
+	 */
 	public boolean play(Movement movement, Player player)
 	{
 		if(movement == null || player == null)
@@ -107,7 +132,11 @@ public class Game {
 		return true;
 		
 	}
-	
+	/**
+	 * creates a random grid using gridSize
+	 * @param gridSize
+	 * @return
+	 */
 	public Grid createRandomGrid(int gridSize)
 	{
 		if(gridSize < 3 || gridSize > 7)
