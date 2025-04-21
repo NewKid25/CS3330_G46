@@ -99,71 +99,71 @@ class GameTest {
 
 	}
 	
-//	@Test
-//	void testAdjacentCellsSharedCellComponentConsistency() {
-//		Grid grid = game.createRandomGrid(5);
-//		assertEquals(true, areGridCellsConsistent(grid));
-//	}
-//	
-//	private boolean areGridCellsConsistent(Grid grid) {
-//		for(int i=0; i<grid.getRows().size(); i++) {
-//			// check vertical shared cell components (fixed row)
-//			ArrayList<Cell> cells = grid.getRows().get(i).getCells();
-//			for(int j=0; j<cells.size() - 1; j++) {
-//				System.out.println(cells.get(j).getRight() + " - " + cells.get(j+1).getLeft());
-//				if(!cells.get(j).getRight().equals(cells.get(j+1).getLeft())) {
-//					return false;
-//				}
-//			}
-//			System.out.println("Row finished");
-//			// check horizontal shared cell components (fixed column)
-//			for(int j=0; j<grid.getRows().size() - 1; j++) {
-//				System.out.println(grid.getRows().get(j).getCells().get(i).getDown() + " - " + grid.getRows().get(j+1).getCells().get(i).getUp());
-//				if(!grid.getRows().get(j).getCells().get(i).getDown().equals(grid.getRows().get(j+1).getCells().get(i).getUp())) {
-//					return false;
-//				}
-//				System.out.println("Column finished");
-//			}
-//		}
-//		return true;
-//	}
-//	
-//	@Test
-//	void testIfThereIsAnExitOnLeft() {
-//		Game game = new Game(3);
-//		assertEquals(true, isThereAnExitOnLeftSideGrid(game.createRandomGrid(5)));
-//	}
-//	
-//	@ParameterizedTest
-//	@MethodSource("invalidGridSizeInputProvider")
-//	void testInvalidGridSizeInput(Grid expected, Grid actual) {
-//		assertEquals(expected, actual);
-//	}
-//	
-//	private static Stream<Arguments> invalidGridSizeInputProvider() {
-//		Game game = new Game(3);
-//		return Stream.of(Arguments.of(null, game.createRandomGrid(2)),
-//							Arguments.of(null, game.createRandomGrid(8)));
-//	}
-//	
-//	@Test
-//	void testInvalidMovement() {
-//		Game game = new Game(3);
-//		assertEquals(false, game.play(null, player));
-//	}
-//	
-//	@Test
-//	void testInvalidNullPlayer() {
-//		assertEquals(false, game.play(Movement.UP, null));		
-//	}
-//	
-//	@Test
-//	void testIfThereIsOnlyOneExitOnLeft() {
-//		Game game = new Game(3);
-//		assertEquals(true, isThereOnlyOneExit(game.createRandomGrid(5)));
-//	}
-//
-//
+	@Test
+	void testAdjacentCellsSharedCellComponentConsistency() {
+		Grid grid = game.createRandomGrid(5);
+		assertEquals(true, areGridCellsConsistent(grid));
+	}
+	
+	private boolean areGridCellsConsistent(Grid grid) {
+		for(int i=0; i<grid.getRows().size(); i++) {
+			// check vertical shared cell components (fixed row)
+			ArrayList<Cell> cells = grid.getRows().get(i).getCells();
+			for(int j=0; j<cells.size() - 1; j++) {
+				System.out.println(cells.get(j).getRight() + " - " + cells.get(j+1).getLeft());
+				if(!cells.get(j).getRight().equals(cells.get(j+1).getLeft())) {
+					return false;
+				}
+			}
+			System.out.println("Row finished");
+			// check horizontal shared cell components (fixed column)
+			for(int j=0; j<grid.getRows().size() - 1; j++) {
+				System.out.println(grid.getRows().get(j).getCells().get(i).getDown() + " - " + grid.getRows().get(j+1).getCells().get(i).getUp());
+				if(!grid.getRows().get(j).getCells().get(i).getDown().equals(grid.getRows().get(j+1).getCells().get(i).getUp())) {
+					return false;
+				}
+				System.out.println("Column finished");
+			}
+		}
+		return true;
+	}
+	
+	@Test
+	void testIfThereIsAnExitOnLeft() {
+		Game game = new Game(3);
+		assertEquals(true, isThereAnExitOnLeftSideGrid(game.createRandomGrid(5)));
+	}
+	
+	@ParameterizedTest
+	@MethodSource("invalidGridSizeInputProvider")
+	void testInvalidGridSizeInput(Grid expected, Grid actual) {
+		assertEquals(expected, actual);
+	}
+	
+	private static Stream<Arguments> invalidGridSizeInputProvider() {
+		Game game = new Game(3);
+		return Stream.of(Arguments.of(null, game.createRandomGrid(2)),
+							Arguments.of(null, game.createRandomGrid(8)));
+	}
+	
+	@Test
+	void testInvalidMovement() {
+		Game game = new Game(3);
+		assertEquals(false, game.play(null, player));
+	}
+	
+	@Test
+	void testInvalidNullPlayer() {
+		assertEquals(false, game.play(Movement.UP, null));		
+	}
+	
+	@Test
+	void testIfThereIsOnlyOneExitOnLeft() {
+		Game game = new Game(3);
+		assertEquals(true, isThereOnlyOneExit(game.createRandomGrid(5)));
+	}
+
+
 	private static void setupGame() {
 		Cell cell00 = new Cell(CellComponents.EXIT, CellComponents.APERTURE,
 				CellComponents.WALL, CellComponents.APERTURE);

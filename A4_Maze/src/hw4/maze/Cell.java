@@ -8,6 +8,11 @@ public class Cell {
 	private CellComponents down;
 	
 
+	public Cell()
+	{
+		
+	}
+	
 	public Cell(CellComponents left, CellComponents right, CellComponents up, CellComponents down) {
 		super();
 		this.left = left;
@@ -78,6 +83,18 @@ public class Cell {
 		else
 		{			
 			this.down = down;
+		}
+	}
+	
+	public boolean containsAtLeastOneWall()
+	{
+		if(left==CellComponents.WALL || right == CellComponents.WALL || up == CellComponents.WALL || down == CellComponents.WALL)
+		{
+			return true;
+		}
+		else
+		{
+			return false;			
 		}
 	}
 }
