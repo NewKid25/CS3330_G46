@@ -134,4 +134,16 @@ public class Cell {
 			return false;			
 		}
 	}
+	
+	public boolean containsExit()
+	{
+		if(left==CellComponents.EXIT || right == CellComponents.EXIT || up == CellComponents.EXIT || down == CellComponents.EXIT)
+		{
+			return true;
+		}
+		else
+		{
+			return false;			
+		}
+	}
 }

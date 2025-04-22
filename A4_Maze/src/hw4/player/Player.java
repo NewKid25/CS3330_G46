@@ -7,7 +7,7 @@ public class Player {
 	private Cell currentCell;
 	private Row currentRow;
 	/**
-	 * sets the super postion
+	 * creates a player with position
 	 * @param currentRow
 	 * @param currentCell
 	 */
