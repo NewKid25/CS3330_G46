@@ -6,6 +6,7 @@ import hw4.maze.Cell;
 import hw4.maze.CellComponents;
 import hw4.maze.Grid;
 import hw4.maze.Row;
+import hw4.player.Player;
 import hw4.game.*;
 
 public class Main {
@@ -68,9 +69,13 @@ public class Main {
 		
 		var game = new Game(grid);
 		
-		System.out.println(game.getGrid().FindRowIndex(row0));
-		System.out.println(row0.FindCellIndex(cell21));
+//		System.out.println(game.getGrid().FindRowIndex(row0));
+//		System.out.println(row0.FindCellIndex(cell21));
 		
+		var player = new Player(row0, cell00);
+		for(int i = 0; i < 22; i++) {
+			System.out.println(cells);
+		}
 		
 
 	}
