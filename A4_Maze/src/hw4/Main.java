@@ -72,12 +72,19 @@ public class Main {
 //		System.out.println(game.getGrid().FindRowIndex(row0));
 //		System.out.println(row0.FindCellIndex(cell21));
 		
-		var player = new Player(row0, cell00);
-		for(int i = 0; i < 22; i++) {
-			System.out.println(cells);
+		var player = new Player(row2, cell22);
+		while(player.getCurrentCell() != cells.get(0)) {
+			for(int i = 0; i < 22; i++) {
+				System.out.print(cells.get(i).getLeft() + " ");
+				System.out.print(cells.get(i).getUp() + " ");
+				System.out.print(cells.get(i).getDown()+ " ");
+				System.out.print(cells.get(i).getRight());
+				System.out.print("\n");
+				player.setCurrentCell(cells.get(i).getLeft());
+				player.setCurrentCell(cells.get(i).getRight());
 		}
-		
 
 	}
 
+	}
 }
