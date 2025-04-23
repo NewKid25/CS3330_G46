@@ -54,7 +54,7 @@ public class Game {
 	}
 	
 	/**
-	 * This method starts the game and then checks to see if the agent has escaped
+	 * This method moves the player in the grid, checking if the player would hit a wall
 	 * @param movement
 	 * @param player
 	 * @return
@@ -68,7 +68,7 @@ public class Game {
 		
 		Row playerCurrentRow = player.getCurrentRow();
 		Cell playerCurrentCell = player.getCurrentCell();
-//		System.out.println(playerCurrentCell.toString());
+
 		int changeX =0, changeY = 0;
 		switch(movement)
 		{
@@ -172,8 +172,8 @@ public class Game {
 				}
 				else
 				{
-					boolean isWall = rand.nextBoolean();
-					if(isWall)
+					var isWallProb = rand.nextDouble();
+					if(isWallProb < .2) //walls should spawn about 20% of the time
 					{
 						currentCell.setRight(CellComponents.WALL);
 					}
@@ -199,8 +199,8 @@ public class Game {
 				}
 				else
 				{
-					boolean isWall = rand.nextBoolean();
-					if(isWall)
+					var isWallProb = rand.nextDouble();
+					if(isWallProb<0.15)//probability for a wall is 15%
 					{
 						currentCell.setDown(CellComponents.WALL);
 					}
@@ -210,7 +210,7 @@ public class Game {
 					}
 				}				
 				
-				//if allCellsAperature, make right side wall or somethin
+				
 				if(!currentCell.containsAtLeastOneWall()) //check if cell is all apertures, which is illegal
 				{
 					currentCell.setRight(CellComponents.WALL);
@@ -224,13 +224,60 @@ public class Game {
 		//pick a row and set leftmost cell in that row to have the one exit
 		int rowToHaveExit = rand.nextInt(gridSize);
 		rowList.get(rowToHaveExit).getCells().get(0).setLeft(CellComponents.EXIT);
-		
+		//making double sure that exit does not have walls on all sides
+		rowList.get(rowToHaveExit).getCells().get(0).setRight(CellComponents.APERTURE);
+		rowList.get(rowToHaveExit).getCells().get(1).setLeft(CellComponents.APERTURE);
+	
 		var grid = new Grid(rowList);
 		return grid;
 	}
 	
 	
-	
+	public Player initPlayerInValidPosition(int maxDistanceFromExit) 
+	{
+		var rows = grid.getRows();
+		Player player = null;
+		for(var row : rows)
+		{
+			var leftMostCellInRow = row.getCells().get(0);
+			if(leftMostCellInRow.containsExit())
+			{
+				player = new Player(row, leftMostCellInRow);
+			}
+		}
+		
+		//randomly try move away from the exit a maxDistanceFromExit number of times
+		//this way we guarantee that the exit is reachable from where the player starts
+		var rand = new Random();
+		for(int i =0; i<maxDistanceFromExit; i++)
+		{
+			var directionToTry =rand.nextInt(3);
+			switch (directionToTry)
+			{
+				//never move left because that would put player closer to exit
+				case 0:
+					play(Movement.UP, player);
+				case 1:
+					play(Movement.RIGHT, player);
+				case 2:
+					play(Movement.DOWN, player);
+			}
+		}
+		
+		//dont want to start player on exit, make sure they move (one direction must be open
+		if(player.getCurrentCell().containsExit()) 
+		{
+			play(Movement.UP, player);
+			play(Movement.RIGHT, player);
+			if(player.getCurrentCell().containsExit()) //dont move down if player not on exit (up then down could cancel out)
+			{
+				play(Movement.DOWN, player);
+			}
+		}
+		return player;
+		
+		
+	}
 
 	
 	

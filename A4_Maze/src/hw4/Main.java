@@ -17,13 +17,13 @@ public class Main {
 		
 		Game game = new Game(5);
 		var grid = game.getGrid();
-		var player = new Player(grid.getRows().get(2), 
-				grid.getRows().get(2).getCells().get(2));
+		var player = game.initPlayerInValidPosition(10);
 		var renderer = new GameRenderer();
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to Tears, Dispear, and Debugging (TDD)");
 		System.out.println("The goal of this game is to get the agent out of the maze");
 		System.out.println("Instructions: type up, down, right, or left to move the agent");
+		System.out.println("Once you reach the exit, denoted with an E, move left to exit the maze.");
 		
 		while(true) {
 			renderer.printGame(game, player);
@@ -31,36 +31,23 @@ public class Main {
 			String movement = scanner.nextLine().toLowerCase();
 			if(movement.equals("up")) {
 				game.play(Movement.UP, player);
-				if(player.getCurrentCell().containsExit() == true)
-				{
-					break; //player exits the maze
-				}
 			} else if(movement.equals("down")) {
 				game.play(Movement.DOWN, player);
-				if(player.getCurrentCell().containsExit() == true)
-				{
-					break; //player exits the maze
-				}
 			} else if(movement.equals("right")) {
 				game.play(Movement.RIGHT, player);
-				if(player.getCurrentCell().containsExit() == true)
-				{
-					break; //player exits the maze
-				}
 			} else if(movement.equals("left")) {
-				game.play(Movement.LEFT, player);
 				if(player.getCurrentCell().containsExit() == true)
 				{
 					break; //player exits the maze
 				}
+				game.play(Movement.LEFT, player);
 			}
 			else {
 				System.out.println("Bad input, please try again");
 			}
 			
 		}
-		renderer.printGame(game, player);
-		System.out.println("\nCongratulations!!! You successfully found your way out of the maze!");
 		
+		System.out.println("\nCongratulations!!! You successfully found your way out of the maze!");
 	}
 }
