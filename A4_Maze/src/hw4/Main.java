@@ -1,6 +1,7 @@
 package hw4;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import hw4.maze.Cell;
 import hw4.maze.CellComponents;
@@ -69,22 +70,10 @@ public class Main {
 //		
 //		var game = new Game(grid);
 //		
-////		System.out.println(game.getGrid().FindRowIndex(row0));
-////		System.out.println(row0.FindCellIndex(cell21));
+//			System.out.println(game.getGrid().FindRowIndex(row0));
+//			System.out.println(row0.FindCellIndex(cell21));
 //		
-//		var player = new Player(row2, cell22);
-//		while(player.getCurrentCell() != cells.get(0)) {
-//			for(int i = 0; i < 22; i++) {
-//				System.out.print(cells.get(i).getLeft() + " ");
-//				System.out.print(cells.get(i).getUp() + " ");
-//				System.out.print(cells.get(i).getDown()+ " ");
-//				System.out.print(cells.get(i).getRight());
-//				System.out.print("\n");
-//				player.setCurrentCell(cells.get(i).getLeft());
-//				player.setCurrentCell(cells.get(i).getRight());
-//		}
 //
-//	}
 //
 		
 		Game game = new Game(5);
@@ -92,6 +81,28 @@ public class Main {
 		var player = new Player(grid.getRows().get(2), 
 				grid.getRows().get(2).getCells().get(2));
 		var renderer = new GameRenderer();
-		renderer.printGame(game, player);
+//		renderer.printGame(game, player);
+		Scanner scanner = new Scanner(System.in);
+		Cell cells = new Cell();
+		
+		while(cells.containsExit() == false) {
+			renderer.printGame(game, player);
+			System.out.print("Up, Down, left, or right? ");
+			String movement = scanner.nextLine();
+			
+			if(movement == "up" || movement == "Up") {
+				player.setCurrentCell(player.getCurrentCell().getUp());
+			} else if(movement == "down" || movement == "Down") {
+				player.setCurrentCell(player.getCurrentCell().getDown());
+			} else if(movement == "right" || movement == "Right") {
+				player.setCurrentCell(player.getCurrentCell().getRight());
+			} else if(movement == "right" || movement == "Right") {
+				player.setCurrentCell(player.getCurrentCell().getRight());
+			}
+				else {
+					System.out.println("Try again");
+				}
+			
+		}
 	}
 }
