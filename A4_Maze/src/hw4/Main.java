@@ -92,12 +92,16 @@ public class Main {
 			
 			if(movement == "up" || movement == "Up") {
 				player.setCurrentCell(player.getCurrentCell().getUp());
+				cells = player.getCurrentCell();
 			} else if(movement == "down" || movement == "Down") {
 				player.setCurrentCell(player.getCurrentCell().getDown());
+				cells = player.getCurrentCell();
 			} else if(movement == "right" || movement == "Right") {
 				player.setCurrentCell(player.getCurrentCell().getRight());
+				cells = player.getCurrentCell();
 			} else if(movement == "right" || movement == "Right") {
 				player.setCurrentCell(player.getCurrentCell().getRight());
+				cells = player.getCurrentCell();
 			}
 				else {
 					System.out.println("Try again");
