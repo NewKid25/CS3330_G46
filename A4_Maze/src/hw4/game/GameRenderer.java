@@ -3,7 +3,12 @@ package hw4.game;
 import hw4.player.Player;
 
 public class GameRenderer {
-
+	/**
+	 * This function prints the grid of the game for the player to
+	 * see where they are at and where the walls and exit is
+	 * @param game
+	 * @param player
+	 */
 	public void printGame(Game game, Player player)
 	{
 		var grid = game.getGrid();
