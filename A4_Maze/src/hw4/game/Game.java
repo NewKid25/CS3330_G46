@@ -232,7 +232,11 @@ public class Game {
 		return grid;
 	}
 	
-	
+	/**
+	 * creates a player in a starting position that can reach the exit of the game's grid
+	 * @param maxDistanceFromExit maximum number of cells a player could spawn away from the exit
+	 * @return new Player with current Row and Cell that are reachable from the exit
+	 */
 	public Player initPlayerInValidPosition(int maxDistanceFromExit) 
 	{
 		var rows = grid.getRows();
