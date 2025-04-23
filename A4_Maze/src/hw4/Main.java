@@ -7,6 +7,7 @@ import hw4.maze.Cell;
 import hw4.maze.CellComponents;
 import hw4.maze.Grid;
 import hw4.maze.Row;
+import hw4.player.Movement;
 import hw4.player.Player;
 import hw4.game.*;
 
@@ -83,30 +84,33 @@ public class Main {
 		var renderer = new GameRenderer();
 //		renderer.printGame(game, player);
 		Scanner scanner = new Scanner(System.in);
-		Cell cells = new Cell();
+
 		
-		while(cells.containsExit() == false) {
+		while(true) {
 			renderer.printGame(game, player);
-			System.out.print("Up, Down, left, or right? ");
-			String movement = scanner.nextLine();
-			
-			if(movement == "up" || movement == "Up") {
-				player.setCurrentCell(player.getCurrentCell().getUp());
-				cells = player.getCurrentCell();
-			} else if(movement == "down" || movement == "Down") {
-				player.setCurrentCell(player.getCurrentCell().getDown());
-				cells = player.getCurrentCell();
-			} else if(movement == "right" || movement == "Right") {
-				player.setCurrentCell(player.getCurrentCell().getRight());
-				cells = player.getCurrentCell();
-			} else if(movement == "right" || movement == "Right") {
-				player.setCurrentCell(player.getCurrentCell().getRight());
-				cells = player.getCurrentCell();
-			}
-				else {
-					System.out.println("Try again");
+			System.out.print("up, down, left, or right? ");
+			String movement = scanner.nextLine().toLowerCase();
+			if(movement.equals("up")) {
+				System.out.println("on");
+				game.play(Movement.UP, player);
+			} else if(movement.equals("down")) {
+				game.play(Movement.DOWN, player);
+			} else if(movement.equals("right")) {
+				game.play(Movement.RIGHT, player);
+			} else if(movement.equals("left")) {
+				if(player.getCurrentCell().containsExit() == true)
+				{
+					break; //player exits the maze
 				}
+				game.play(Movement.LEFT, player);
+			}
+			else {
+				System.out.println("Bad input, please try again");
+			}
 			
 		}
+		
+		System.out.println("\nCongratulations!!! You successfully found your way out of the maze!");
+		
 	}
 }
