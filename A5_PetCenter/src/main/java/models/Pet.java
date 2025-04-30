@@ -1,73 +1,36 @@
 package models;
 
 public abstract class Pet {
-    private int id;
-    private String name;
-    private String type;
-    private String species;
-    private int age;
+
     private boolean isAdopted;
-    
-    
-	public Pet(int id, String name, String type, String species, int age, boolean isAdopted) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.species = species;
-		this.age = age;
-		this.isAdopted = isAdopted;
-	}
+   
+	public abstract int getId();
 
 
-	public int getId() {
-		return id;
-	}
+	public abstract void setId(int id);
 
 
-	public void setId(int id) {
-		this.id = id;
-	}
+	public abstract String getName();
+
+	public abstract void setName(String name);
 
 
-	public String getName() {
-		return name;
-	}
+	public abstract String getType();
 
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	public abstract void setType(String type);
 
 
-	public String getType() {
-		return type;
-	}
+	public abstract String getSpecies();
 
 
-	public void setType(String type) {
-		this.type = type;
-	}
+	public abstract void setSpecies(String species);
 
 
-	public String getSpecies() {
-		return species;
-	}
+	public abstract int getAge();
 
 
-	public void setSpecies(String species) {
-		this.species = species;
-	}
-
-
-	public int getAge() {
-		return age;
-	}
-
-
-	public void setAge(int age) {
-		this.age = age;
-	}
+	public abstract void setAge(int age);
 
 
 	public boolean isAdopted() {
