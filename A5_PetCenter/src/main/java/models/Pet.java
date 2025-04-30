@@ -1,6 +1,6 @@
 package models;
 
-public class PetModel {
+public abstract class Pet {
     private int id;
     private String name;
     private String type;
@@ -9,7 +9,7 @@ public class PetModel {
     private boolean isAdopted;
     
     
-	public PetModel(int id, String name, String type, String species, int age, boolean isAdopted) {
+	public Pet(int id, String name, String type, String species, int age, boolean isAdopted) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -78,4 +78,5 @@ public class PetModel {
 	public void setAdopted(boolean isAdopted) {
 		this.isAdopted = isAdopted;
 	}
+
 }
