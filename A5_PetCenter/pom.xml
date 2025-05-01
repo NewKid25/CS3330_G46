@@ -4,4 +4,12 @@
   <artifactId>A5_PetCenter</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>A5_PetCenter</name>
+  <dependencies>
+  <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+	<dependency>
+	    <groupId>com.google.code.gson</groupId>
+	    <artifactId>gson</artifactId>
+	    <version>2.13.1</version>
+	</dependency>
+  </dependencies>
 </project>
