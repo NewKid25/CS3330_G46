@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import models.ExoticAnimal;
 import models.NormalAnimal;
+import views.PetDetailsView;
 import views.PetView;
 
 public class petController {
@@ -23,7 +24,11 @@ public class petController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			//add new user here using button
+			PetView currentview = new PetView();
+			if(arg0 == exanimal) {
+				currentview.adoptList.add(exanimal.getName(), currentview.adoptList);
+			}
+			currentview.adoptList.add(normanimal.getName(), currentview.adoptList);
 			
 		}
 		
@@ -32,17 +37,21 @@ public class petController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			//delete new user here using button
+			PetView currentview = new PetView();
+			if(arg0 == exanimal) {
+				currentview.adoptList.removeElement(exanimal.getName(), currentview.adoptList);
+			}
+			currentview.adoptList.removeElement(normanimal.getName(), currentview.adoptList);
 			
 		}
 		
 	}
 	private class DetailsButtonActionListener implements ActionListener{
-
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			//view animal details closer up here
-			
+			PetDetailsView newview = new PetDetailsView();
+			newview.getPetDetails();
+			newview.isVisible(true);
 		}
 		
 	}
@@ -50,7 +59,7 @@ public class petController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			//Save action implemented here
+			//Save adopted animals to json file button implemented here
 			
 		}
 		
