@@ -5,6 +5,8 @@ import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import models.NormalAnimal;
+
 public class PetDetailsView extends JFrame {
 	private JPanel panel;
 
@@ -17,8 +19,15 @@ public class PetDetailsView extends JFrame {
 		setContentPane(panel);
 		getContentPane().setLayout(null);
 	}
-	public void getPetDetails() {
-		//gets the detail of the animal selected and prints them on the window
+	public int getPetDetails() {
+		PetView petview = new PetView();
+		int index = petview.adoptList.getSelectedIndex();
+		petview.adoptList.getSelectedValue().getClass().getName();
+		petview.adoptList.getSelectedValue().getClass().getId();
+		petview.adoptList.getSelectedValue().getClass().gettype();
+		petview.adoptList.getSelectedValue().getClass().getspecies();
+		petview.adoptList.getSelectedValue().getClass().getage();
+		
 	}
 	
 }
