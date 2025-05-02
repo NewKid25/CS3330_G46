@@ -8,19 +8,22 @@ import models.*;
 public class AppMain {
 
 	public static void main(String[] args) {
-		var view = new PetView();
+
+		var bob = new PetJsonParser();
+		var pets = bob.ReadNormalAnimals("./src/main/resources/pets.json");
 		
-		
-		while(true)
+		for(var a : pets)
 		{
-			try {
-				Thread.sleep(200);
-			}
-			catch(Exception e)
-			{
-				break;
-			}
+			System.out.println(a.toString());
 		}
+		
+		var pets1 = bob.ReadExoticAnimals("./src/main/resources/exotic_animals.json");
+		
+		for(var a : pets1)
+		{
+			System.out.println(a.toString());
+		}
+
 	}
 
 }

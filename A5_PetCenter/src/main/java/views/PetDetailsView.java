@@ -22,12 +22,12 @@ public class PetDetailsView extends JFrame {
 	public int getPetDetails() {
 		PetView petview = new PetView();
 		int index = petview.adoptList.getSelectedIndex();
-		petview.adoptList.getSelectedValue().getClass().getName();
-		petview.adoptList.getSelectedValue().getClass().getId();
-		petview.adoptList.getSelectedValue().getClass().gettype();
-		petview.adoptList.getSelectedValue().getClass().getspecies();
-		petview.adoptList.getSelectedValue().getClass().getage();
-		
+//		petview.adoptList.getSelectedValue().getClass().getName();
+//		petview.adoptList.getSelectedValue().getClass().getId();
+//		petview.adoptList.getSelectedValue().getClass().gettype();
+//		petview.adoptList.getSelectedValue().getClass().getspecies();
+//		petview.adoptList.getSelectedValue().getClass().getage();
+		return 0;
 	}
 	
 }

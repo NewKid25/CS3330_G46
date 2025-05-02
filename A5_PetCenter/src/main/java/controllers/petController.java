@@ -24,11 +24,11 @@ public class petController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			PetView currentview = new PetView();
-			if(arg0 == exanimal) {
-				currentview.adoptList.add(exanimal.getName(), currentview.adoptList);
-			}
-			currentview.adoptList.add(normanimal.getName(), currentview.adoptList);
+//			PetView currentview = new PetView();
+//			if(arg0 == exanimal) {
+//				currentview.adoptList.add(exanimal.getName(), currentview.adoptList);
+//			}
+//			currentview.adoptList.add(normanimal.getName(), currentview.adoptList);
 			
 		}
 		
@@ -37,21 +37,21 @@ public class petController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			PetView currentview = new PetView();
-			if(arg0 == exanimal) {
-				currentview.adoptList.removeElement(exanimal.getName(), currentview.adoptList);
-			}
-			currentview.adoptList.removeElement(normanimal.getName(), currentview.adoptList);
-			
+//			PetView currentview = new PetView();
+//			if(arg0 == exanimal) {
+//				currentview.adoptList.removeElement(exanimal.getName(), currentview.adoptList);
+//			}
+//			currentview.adoptList.removeElement(normanimal.getName(), currentview.adoptList);
+//			
 		}
 		
 	}
 	private class DetailsButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			PetDetailsView newview = new PetDetailsView();
-			newview.getPetDetails();
-			newview.isVisible(true);
+//			PetDetailsView newview = new PetDetailsView();
+//			newview.getPetDetails();
+//			newview.isVisible(true);
 		}
 		
 	}

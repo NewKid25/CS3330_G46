@@ -2,6 +2,7 @@ package models;
 
 public class NormalAnimal extends Pet{
 
+
 	private int id;
     private String name;
     private String type;
@@ -66,4 +67,9 @@ public class NormalAnimal extends Pet{
 		this.age = age;
 	}
 
+	@Override
+	public String toString() {
+		return "NormalAnimal [id=" + id + ", name=" + name + ", type=" + type + ", species=" + species + ", age=" + age
+				+ "]";
+	}
 }
