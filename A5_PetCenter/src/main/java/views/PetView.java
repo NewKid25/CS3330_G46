@@ -21,6 +21,8 @@ public class PetView extends JFrame {
 	public JList<Object> adoptList;
 	private JButton saveButton;
 	private JLabel adoptLabel;
+	public JList adoptedList;
+	private JLabel adoptedLabel;
 	
 	public PetView(List<Pet> petList) {
 		setTitle("Animal Adaption Page");
@@ -55,11 +57,11 @@ public class PetView extends JFrame {
 		adoptLabel.setBounds(37, 18, 92, 16);
 		panel.add(adoptLabel);
 		
-		JList adoptedList = new JList();
+		adoptedList = new JList();
 		adoptedList.setBounds(325, 35, 128, 214);
 		panel.add(adoptedList);
 		
-		JLabel adoptedLabel = new JLabel("Pets Adopted");
+		adoptedLabel = new JLabel("Pets Adopted");
 		adoptedLabel.setBounds(346, 18, 92, 16);
 		panel.add(adoptedLabel);
 		
@@ -68,5 +70,14 @@ public class PetView extends JFrame {
 	
 	public void addActionListenerToRemoveButton(ActionListener listener) {
 		removeButton.addActionListener(listener);
+	}
+	public void addActionListenerToAdoptButton(ActionListener listener) {
+		adoptButton.addActionListener(listener);
+	}
+	public void addActionListenerToDetailsButton(ActionListener listener) {
+		detailsButton.addActionListener(listener);
+	}
+	public void addActionListenerToSaveButton(ActionListener listener) {
+		saveButton.addActionListener(listener);
 	}
 }
