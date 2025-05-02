@@ -3,6 +3,11 @@ package views;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import models.Pet;
+
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JLabel;
@@ -12,11 +17,11 @@ public class PetView extends JFrame {
 	private JButton adoptButton;
 	private JButton removeButton;
 	private JButton detailsButton;
-	public JList adoptList;
+	public JList<Object> adoptList;
 	private JButton saveButton;
 	private JLabel adoptLabel;
 	
-	public PetView() {
+	public PetView(List<Pet> petList) {
 		setTitle("Animal Adaption Page");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
@@ -29,7 +34,7 @@ public class PetView extends JFrame {
 		adoptButton.setBounds(164, 62, 117, 29);
 		panel.add(adoptButton);
 		
-		adoptList = new JList();
+		adoptList = new JList<Object>(petList.toArray());
 		adoptList.setBounds(24, 35, 128, 214);
 		panel.add(adoptList);
 		
@@ -57,5 +62,6 @@ public class PetView extends JFrame {
 		adoptedLabel.setBounds(346, 18, 92, 16);
 		panel.add(adoptedLabel);
 		
+		this.setVisible(true);
 	}
 }

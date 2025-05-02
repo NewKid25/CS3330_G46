@@ -2,22 +2,40 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import models.ExoticAnimal;
 import models.NormalAnimal;
+import models.Pet;
+import models.Shelter;
+import services.PetJsonParser;
 import views.PetDetailsView;
 import views.PetView;
 
-public class petController {
+public class PetController {
 	private PetView view;
-	private ExoticAnimal exanimal;
-	private NormalAnimal normanimal;
+
 	
-	public petController(PetView view, ExoticAnimal exanimal, NormalAnimal normanimal) {
+	public PetController() {
 		super();
-		this.view = view;
-		this.exanimal = exanimal;
-		this.normanimal = normanimal;
+		
+		var parser = new PetJsonParser();
+		var normalAnimals = parser.ReadNormalAnimals("./src/main/resources/pets.json");
+		var exoticAnimals = parser.ReadExoticAnimals("./src/main/resources/exotic_animals.json");
+
+		var pets = new ArrayList<Pet>();
+//		var shelter = new Shelter<NormalAnimal>();
+		
+		for(var a : normalAnimals)
+		{
+			pets.add(a);
+		}
+		for(var a : exoticAnimals)
+		{
+			pets.add(a);
+		}
+		
+		view = new PetView(pets);
 	}
 	
 	private class AdoptButtonActionListener implements ActionListener{

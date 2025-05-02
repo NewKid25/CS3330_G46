@@ -20,8 +20,8 @@ public class PetDetailsView extends JFrame {
 		getContentPane().setLayout(null);
 	}
 	public int getPetDetails() {
-		PetView petview = new PetView();
-		int index = petview.adoptList.getSelectedIndex();
+//		PetView petview = new PetView();
+//		int index = petview.adoptList.getSelectedIndex();
 //		petview.adoptList.getSelectedValue().getClass().getName();
 //		petview.adoptList.getSelectedValue().getClass().getId();
 //		petview.adoptList.getSelectedValue().getClass().gettype();
