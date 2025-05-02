@@ -18,6 +18,7 @@ public class PetDetailsView extends JFrame {
 		panel = new JPanel();
 		setContentPane(panel);
 		getContentPane().setLayout(null);
+		
 	}
 	public int getPetDetails() {
 //		PetView petview = new PetView();

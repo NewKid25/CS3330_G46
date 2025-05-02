@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 
 import models.Pet;
 
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -63,5 +64,9 @@ public class PetView extends JFrame {
 		panel.add(adoptedLabel);
 		
 		this.setVisible(true);
+	}
+	
+	public void addActionListenerToRemoveButton(ActionListener listener) {
+		removeButton.addActionListener(listener);
 	}
 }

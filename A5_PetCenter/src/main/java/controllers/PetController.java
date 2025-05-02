@@ -14,6 +14,7 @@ import views.PetView;
 
 public class PetController {
 	private PetView view;
+	private ArrayList<Pet> pets;
 
 	
 	public PetController() {
@@ -23,7 +24,7 @@ public class PetController {
 		var normalAnimals = parser.ReadNormalAnimals("./src/main/resources/pets.json");
 		var exoticAnimals = parser.ReadExoticAnimals("./src/main/resources/exotic_animals.json");
 
-		var pets = new ArrayList<Pet>();
+		pets = new ArrayList<Pet>();
 //		var shelter = new Shelter<NormalAnimal>();
 		
 		for(var a : normalAnimals)
@@ -36,6 +37,8 @@ public class PetController {
 		}
 		
 		view = new PetView(pets);
+		
+		view.addActionListenerToRemoveButton(new DeleteButtonActionListener());
 	}
 	
 	private class AdoptButtonActionListener implements ActionListener{
@@ -47,7 +50,7 @@ public class PetController {
 //				currentview.adoptList.add(exanimal.getName(), currentview.adoptList);
 //			}
 //			currentview.adoptList.add(normanimal.getName(), currentview.adoptList);
-			
+//			
 		}
 		
 	}
@@ -55,6 +58,7 @@ public class PetController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("You pressed remove");
 //			PetView currentview = new PetView();
 //			if(arg0 == exanimal) {
 //				currentview.adoptList.removeElement(exanimal.getName(), currentview.adoptList);
