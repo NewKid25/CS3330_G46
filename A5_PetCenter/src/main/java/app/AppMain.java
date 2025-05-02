@@ -2,6 +2,10 @@ package app;
 
 import services.*;
 import views.*;
+
+import java.util.Collection;
+import java.util.Collections;
+
 import models.*;
 
 
@@ -18,8 +22,16 @@ public class AppMain {
 			System.out.println(a.toString());
 		}
 		
-		shelter.AddPets(pets);
-		System.out.println(shelter);
+		Collections.sort(pets, new PetComparatorBySpecies());
+		System.out.println(pets);
+		
+		Collections.sort(pets, Collections.reverseOrder(new PetComparatorBySpecies()));
+		
+		System.out.println(pets);
+
+		
+//		shelter.AddPets(pets);
+//		System.out.println(shelter);
 		
 //		var pets1 = bob.ReadExoticAnimals("./src/main/resources/exotic_animals.json");
 //		
