@@ -2,11 +2,10 @@ package app;
 
 import services.*;
 import views.*;
+import models.*; 
 
-import java.util.Collection;
 import java.util.Collections;
 
-import models.*;
 
 
 public class AppMain {
@@ -22,10 +21,12 @@ public class AppMain {
 			System.out.println(a.toString());
 		}
 		
-		Collections.sort(pets, new PetComparatorBySpecies());
+//		Collections.sort(pets, new PetComparatorBySpecies());
+		Collections.sort(pets);
+
 		System.out.println(pets);
 		
-		Collections.sort(pets, Collections.reverseOrder(new PetComparatorBySpecies()));
+		Collections.sort(pets, Collections.reverseOrder());
 		
 		System.out.println(pets);
 

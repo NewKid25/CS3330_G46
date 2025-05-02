@@ -1,6 +1,6 @@
 package models;
 
-public abstract class Pet {
+public abstract class Pet implements Comparable<Pet>{
 
     private boolean isAdopted;
    
@@ -42,4 +42,9 @@ public abstract class Pet {
 		this.isAdopted = isAdopted;
 	}
 
+	@Override
+	public int compareTo(Pet p) {
+		// can use comparable for name, use comparators for sorting on other attributes
+		return this.getName().compareTo(p.getName());
+	}
 }
