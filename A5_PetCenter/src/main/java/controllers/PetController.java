@@ -45,12 +45,10 @@ public class PetController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-//			PetView currentview = new PetView();
-//			if(arg0 == exanimal) {
-//				currentview.adoptList.add(exanimal.getName(), currentview.adoptList);
-//			}
-//			currentview.adoptList.add(normanimal.getName(), currentview.adoptList);
-//			
+			System.out.println("hello");
+			PetView petview = new PetView(pets);
+			int index = petview.adoptList.getSelectedIndex();
+			petview.adoptedList.addSelectionInterval(0, index); //add to adoptedlist?
 		}
 		
 	}
@@ -58,22 +56,19 @@ public class PetController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("You pressed remove");
-//			PetView currentview = new PetView();
-//			if(arg0 == exanimal) {
-//				currentview.adoptList.removeElement(exanimal.getName(), currentview.adoptList);
-//			}
-//			currentview.adoptList.removeElement(normanimal.getName(), currentview.adoptList);
-//			
+			PetView petview = new PetView(pets);
+			int index = petview.adoptList.getSelectedIndex();
+			petview.adoptList.remove(index);
 		}
 		
 	}
 	private class DetailsButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-//			PetDetailsView newview = new PetDetailsView();
-//			newview.getPetDetails();
-//			newview.isVisible(true);
+			System.out.println("hello");
+			PetDetailsView petview2 = new PetDetailsView();
+			petview2.initiate();
+			
 		}
 		
 	}
@@ -81,10 +76,20 @@ public class PetController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			System.out.println("hello");
 			//Save adopted animals to json file button implemented here
 			
 		}
 		
+	}
+	public int getPetDetails(Pet pet) {
+		PetDetailsView petview = new PetDetailsView();
+		petview.petName.setText(pet.getName());
+		//petview.petID.setText(pet.getId()); trouble with casting id to strings.
+		petview.petSpecies.setText(pet.getSpecies());
+		petview.petType.setText(pet.getType());
+		//petviewpetAge.setText(pet.getAge()); trouble with casting age to strings.
+		return 0;
 	}
 	
 }
