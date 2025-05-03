@@ -20,7 +20,7 @@ public class ExoticAnimal extends Pet{
 	@Override
 	public int getId() {
 		//ignore the part of the string that says "exo" just get numeric part and parse as int
-		return Integer.parseInt((uniqueId.substring(3)));
+		return Integer.parseInt((uniqueId.substring(3)))+100; //make sure every exotic animal has unique by adding (works if we have few of them)
 	}
 	
 	@Override

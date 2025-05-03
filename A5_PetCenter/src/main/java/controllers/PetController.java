@@ -146,6 +146,15 @@ public class PetController {
 		
 	}
 	public void addPet(Pet pet) {
+		for(var p : pets)
+		{
+			if(p.getId() == pet.getId())
+			{
+				new ErrorMessageView("Pet with ID "+pet.getId()+" already exists, and cannot be added");
+				return;
+			}
+		}
+		//if pet has unique ID, add it to the list
 		pets.add(pet);
 		view.setPetList(pets);
 	}

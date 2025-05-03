@@ -55,7 +55,18 @@ public class PetDetailsController {
 					return;
 				}
 				
-				var normalAnimal = new NormalAnimal(id, view.getPetName(), view.getPetType(), view.getPetSpecies(), age);
+				String name = view.getPetName();
+				String type = view.getPetType();
+				String species = view.getPetSpecies();
+
+				
+				if(name.isEmpty() || type.isEmpty() || species.isEmpty())
+				{
+					new ErrorMessageView("Invalid input. All input fields need to filled in with at least one character");
+					return;
+				}
+				
+				var normalAnimal = new NormalAnimal(id, name, type, species, age);
 				
 				petController.addPet(normalAnimal);
 			}
