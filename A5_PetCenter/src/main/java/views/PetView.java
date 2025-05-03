@@ -3,12 +3,16 @@ package views;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 
+import models.NormalAnimal;
 import models.Pet;
 
 import java.awt.event.ActionListener;
+import java.util.Collection;
 import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JLabel;
@@ -18,7 +22,7 @@ public class PetView extends JFrame {
 	private JButton adoptButton;
 	private JButton removeButton;
 	private JButton detailsButton;
-	public JList<Object> adoptList;
+	public JList<Pet> adoptList;
 	private JButton saveButton;
 	private JLabel adoptLabel;
 	public JList adoptedList;
@@ -37,7 +41,7 @@ public class PetView extends JFrame {
 		adoptButton.setBounds(164, 62, 117, 29);
 		panel.add(adoptButton);
 		
-		adoptList = new JList<Object>(petList.toArray());
+		adoptList = new JList<Pet>(petList.toArray(new Pet[0]));
 		adoptList.setBounds(24, 35, 128, 214);
 		panel.add(adoptList);
 		
@@ -79,5 +83,28 @@ public class PetView extends JFrame {
 	}
 	public void addActionListenerToSaveButton(ActionListener listener) {
 		saveButton.addActionListener(listener);
+	}
+	
+	public ListModel<Pet> getUserList() {
+		return adoptList.getModel();
+	}
+	
+	public void setPetList(List<Pet> petList)
+	{
+		var model = new DefaultListModel<Pet>();
+		for(var pet : petList)
+		{
+			model.addElement(pet);
+		}
+		adoptList.setModel(model);
+	}
+	
+	public int getSelectedPetIndex() {
+		System.out.println("Selected user index: " + adoptList.getSelectedIndex());
+		return adoptList.getSelectedIndex();
+	}
+	
+	public int[] getSelectedPetsIndices() {
+		return adoptList.getSelectedIndices();
 	}
 }

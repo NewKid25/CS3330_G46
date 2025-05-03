@@ -2,7 +2,13 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import models.ExoticAnimal;
 import models.NormalAnimal;
@@ -38,36 +44,60 @@ public class PetController {
 		
 		view = new PetView(pets);
 		
-		view.addActionListenerToRemoveButton(new DeleteButtonActionListener());
+		addActionListenersToView();
+		
 	}
+	
+	
+	private void addActionListenersToView()
+	{
+		view.addActionListenerToRemoveButton(new RemoveButtonActionListener());
+		view.addActionListenerToAdoptButton(new AdoptButtonActionListener());
+		view.addActionListenerToDetailsButton(new DetailsButtonActionListener());
+		view.addActionListenerToSaveButton(new SaveButtonActionListener());
+	}
+	
+	
+	
+	
 	
 	private class AdoptButtonActionListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("hello");
-			PetView petview = new PetView(pets);
-			int index = petview.adoptList.getSelectedIndex();
-			petview.adoptedList.addSelectionInterval(0, index); //add to adoptedlist?
+			System.out.println(arg0);
+//			PetView petview = new PetView(pets);
+//			int index = petview.adoptList.getSelectedIndex();
+//			petview.adoptedList.addSelectionInterval(0, index); //add to adoptedlist?
 		}
 		
 	}
-	private class DeleteButtonActionListener implements ActionListener{
+	private class RemoveButtonActionListener implements ActionListener{
 
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			PetView petview = new PetView(pets);
-			int index = petview.adoptList.getSelectedIndex();
-			petview.adoptList.remove(index);
+		public void actionPerformed(ActionEvent arg0) {			
+			
+			int[] petIndices = view.getSelectedPetsIndices();
+			
+			//indices will be in ascending order, so go through them in reverse (so no problems with index changing after removal)
+			for(int i = petIndices.length-1; i>=0; i--) 
+			{
+				pets.remove(petIndices[i]);
+			}
+			
+			view.setPetList(pets);
+			
 		}
 		
 	}
 	private class DetailsButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("hello");
-			PetDetailsView petview2 = new PetDetailsView();
-			petview2.initiate();
+			System.out.println(arg0);
+
+			//			System.out.println("hello");
+//			PetDetailsView petview2 = new PetDetailsView();
+//			petview2.initiate();
 			
 		}
 		
@@ -76,6 +106,8 @@ public class PetController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			System.out.println(arg0);
+
 			System.out.println("hello");
 			//Save adopted animals to json file button implemented here
 			
