@@ -31,31 +31,36 @@ public class PetView extends JFrame {
 	public PetView(List<Pet> petList) {
 		setTitle("Animal Adaption Page");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 400);
+		setBounds(100, 100, 500, 600);
 		
 		panel = new JPanel();
 		setContentPane(panel);
 		getContentPane().setLayout(null);
 		
+		
+		int btnStartY = 220;
+		int btnSpacingY = 40;
+		
+		
 		adoptButton = new JButton("Adopt");
-		adoptButton.setBounds(164, 62, 117, 29);
+		adoptButton.setBounds(164, btnStartY+btnSpacingY*1, 117, 29);
 		panel.add(adoptButton);
 		
-		adoptList = new JList<Pet>(petList.toArray(new Pet[0]));
-		adoptList.setBounds(24, 35, 128, 214);
-		panel.add(adoptList);
-		
 		removeButton = new JButton("Remove");
-		removeButton.setBounds(164, 104, 117, 29);
+		removeButton.setBounds(164, btnStartY+btnSpacingY*2, 117, 29);
 		panel.add(removeButton);
 		
 		detailsButton = new JButton("View Details");
-		detailsButton.setBounds(164, 145, 117, 29);
+		detailsButton.setBounds(164,  btnStartY+btnSpacingY*3, 117, 29);
 		panel.add(detailsButton);
 		
 		saveButton = new JButton("Save");
-		saveButton.setBounds(164, 185, 117, 29);
+		saveButton.setBounds(164,  btnStartY+btnSpacingY*4, 117, 29);
 		panel.add(saveButton);
+		
+		adoptList = new JList<Pet>(petList.toArray(new Pet[0]));
+		adoptList.setBounds(24, 35, 300, 214);
+		panel.add(adoptList);
 		
 		adoptLabel = new JLabel("Pets to Adopt");
 		adoptLabel.setBounds(37, 18, 92, 16);
@@ -71,6 +76,8 @@ public class PetView extends JFrame {
 		
 		this.setVisible(true);
 	}
+	
+
 	
 	public void addActionListenerToRemoveButton(ActionListener listener) {
 		removeButton.addActionListener(listener);
