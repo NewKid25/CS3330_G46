@@ -65,14 +65,5 @@ public class ExoticAnimal extends Pet{
 	@Override
 	public void setAge(int age) {
 		this.yearsOld = age;
-	}
-
-	@Override
-	public String toString() {
-		return "ExoticAnimal [uniqueId=" + uniqueId + ", animalName=" + animalName + ", category=" + category
-				+ ", subSpecies=" + subSpecies + ", yearsOld=" + yearsOld + "]";
-	}
-	
-	
-	
+	}	
 }

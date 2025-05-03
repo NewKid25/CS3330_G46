@@ -47,4 +47,15 @@ public abstract class Pet implements Comparable<Pet>{
 		// can use comparable for name, use comparators for sorting on other attributes
 		return this.getName().compareTo(p.getName());
 	}
+	
+	@Override
+	public String toString()
+	{
+		var petString = getName() + ", " + getType();
+		if(isAdopted)
+		{
+			petString+=", Adopted";
+		}
+		return petString;
+	}
 }
