@@ -15,8 +15,7 @@ import models.NormalAnimal;
 import models.Pet;
 import models.Shelter;
 import services.PetJsonParser;
-import views.PetDetailsView;
-import views.PetView;
+import views.*;
 
 public class PetController {
 	private PetView view;
@@ -65,10 +64,27 @@ public class PetController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println(arg0);
-//			PetView petview = new PetView(pets);
-//			int index = petview.adoptList.getSelectedIndex();
-//			petview.adoptedList.addSelectionInterval(0, index); //add to adoptedlist?
+
+			int[] petIndices = view.getSelectedPetsIndices();
+			String errorMsg = "";
+			for(var index : petIndices)
+			{
+				var petToAdopt = pets.get(index);
+				if(petToAdopt.isAdopted())
+				{
+					errorMsg += petToAdopt.getName() + " is already adopted.\n";
+				}
+				else
+				{					
+					pets.get(index).setAdopted(true);
+				}
+			}
+			view.setPetList(pets);
+			if(!errorMsg.isEmpty())
+			{
+				errorMsg += "Pets that are already adopted cannot be adopted again.";
+				new ErrorMessageView(errorMsg);
+			}
 		}
 		
 	}
