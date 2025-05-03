@@ -137,10 +137,9 @@ public class PetController {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			System.out.println(arg0);
 
-			System.out.println("hello");
-			//Save adopted animals to json file button implemented here
+			var parser = new PetJsonParser();
+			parser.WritePetsToFile(pets, "./src/main/resources/");
 			
 		}
 		

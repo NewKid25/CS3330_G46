@@ -1,8 +1,13 @@
 package services;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Type;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -49,5 +54,23 @@ public class PetJsonParser {
 	    	
 	    	return null;
 	    }
+	}
+	
+	public void WritePetsToFile(List<Pet> petList, String filePathToDir)
+	{
+		var jsonString = gson.toJson(petList);
+		System.out.println(jsonString);
+
+        LocalDateTime currentTime = LocalDateTime.now();        
+        String formattedDateTime = currentTime.format(DateTimeFormatter.ofPattern("yyyymmdd_hhmmss"));
+
+		String filePath = filePathToDir + formattedDateTime +  "_pets.json";
+		
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write(jsonString);
+        }
+         catch (IOException e) {
+            System.err.println("Error writing pets to file: " + e.getMessage());
+        }
 	}
 }
