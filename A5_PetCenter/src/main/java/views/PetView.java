@@ -26,8 +26,7 @@ public class PetView extends JFrame {
 	public JList<Pet> adoptList;
 	private JButton saveButton;
 	private JLabel adoptLabel;
-	public JList adoptedList;
-	private JLabel adoptedLabel;
+
 	
 	public PetView(List<Pet> petList) {
 		setTitle("Animal Adaption Page");
@@ -63,20 +62,13 @@ public class PetView extends JFrame {
 		panel.add(saveButton);
 		
 		adoptList = new JList<Pet>(petList.toArray(new Pet[0]));
-		adoptList.setBounds(24, 35, 300, 214);
+		adoptList.setBounds(25, 35, 450, 214);
 		panel.add(adoptList);
 		
-		adoptLabel = new JLabel("Pets to Adopt");
-		adoptLabel.setBounds(37, 18, 92, 16);
+		adoptLabel = new JLabel("Pets in the Pet Center");
+		adoptLabel.setBounds(37, 18, 150, 16);
 		panel.add(adoptLabel);
 		
-		adoptedList = new JList();
-		adoptedList.setBounds(325, 35, 128, 214);
-		panel.add(adoptedList);
-		
-		adoptedLabel = new JLabel("Pets Adopted");
-		adoptedLabel.setBounds(346, 18, 92, 16);
-		panel.add(adoptedLabel);
 		
 		this.setVisible(true);
 	}
