@@ -3,12 +3,12 @@ package app;
 import services.*;
 import views.*;
 import models.*;
+import controllers.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import controllers.PetController;
 
 
 
@@ -16,7 +16,7 @@ public class AppMain {
 
 	public static void main(String[] args) {
 
-		
+//		var controller = new PetDetailsController();
 		var controller = new PetController();
 		
 //		var bob = new PetJsonParser();

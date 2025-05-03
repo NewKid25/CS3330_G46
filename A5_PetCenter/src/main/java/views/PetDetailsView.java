@@ -19,9 +19,9 @@ public class PetDetailsView extends JFrame {
 	public JTextField petSpecies;
 	public JTextField petAge;
 
-	public PetDetailsView() throws HeadlessException {
+	public PetDetailsView(Pet pet, boolean isEditable) throws HeadlessException {
 		setTitle("Animal Details Page");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(100, 200, 500, 400);
 		
 		panel = new JPanel();
@@ -49,39 +49,52 @@ public class PetDetailsView extends JFrame {
 		panel.add(ageLabel);
 		
 		petName = new JTextField();
-		petName.setEditable(false);
+		petName.setEditable(isEditable);
 		petName.setBounds(167, 35, 130, 26);
 		panel.add(petName);
 		petName.setColumns(10);
 		
 		petID = new JTextField();
-		petID.setEditable(false);
+		petID.setEditable(isEditable);
 		petID.setColumns(10);
 		petID.setBounds(167, 76, 130, 26);
 		panel.add(petID);
 		
 		petType = new JTextField();
-		petType.setEditable(false);
+		petType.setEditable(isEditable);
 		petType.setColumns(10);
 		petType.setBounds(167, 112, 130, 26);
 		panel.add(petType);
 		
 		petSpecies = new JTextField();
-		petSpecies.setEditable(false);
+		petSpecies.setEditable(isEditable);
 		petSpecies.setColumns(10);
 		petSpecies.setBounds(167, 153, 130, 26);
 		panel.add(petSpecies);
 		
 		petAge = new JTextField();
-		petAge.setEditable(false);
+		petAge.setEditable(isEditable);
 		petAge.setColumns(10);
 		petAge.setBounds(167, 195, 130, 26);
 		panel.add(petAge);
 		
-		this.setVisible(false);
-	}
-	public void initiate() {
+		if(pet != null)
+		{			
+			setTextFeilds(pet);
+		}
+		
 		this.setVisible(true);
+	}
+	
+	public void setTextFeilds(Pet pet)
+	{
+		petName.setText(pet.getName());
+		petID.setText(Integer.toString(pet.getId()));
+		petType.setText(pet.getType());
+		petSpecies.setText(pet.getSpecies());
+		petAge.setText(Integer.toString(pet.getAge()));
 		
 	}
+	
+
 }
