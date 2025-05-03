@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 
 public class PetView extends JFrame {
 	private JPanel panel;
+	private JButton addButton;
 	private JButton adoptButton;
 	private JButton removeButton;
 	private JButton detailsButton;
@@ -38,9 +39,12 @@ public class PetView extends JFrame {
 		getContentPane().setLayout(null);
 		
 		
-		int btnStartY = 220;
+		int btnStartY = 260;
 		int btnSpacingY = 40;
 		
+		addButton = new JButton("Add");
+		addButton.setBounds(164, btnStartY+btnSpacingY*0, 117, 29);
+		panel.add(addButton);
 		
 		adoptButton = new JButton("Adopt");
 		adoptButton.setBounds(164, btnStartY+btnSpacingY*1, 117, 29);
@@ -78,7 +82,9 @@ public class PetView extends JFrame {
 	}
 	
 
-	
+	public void addActionListenerToAddButton(ActionListener listener) {
+		addButton.addActionListener(listener);
+	}
 	public void addActionListenerToRemoveButton(ActionListener listener) {
 		removeButton.addActionListener(listener);
 	}

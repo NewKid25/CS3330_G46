@@ -50,6 +50,7 @@ public class PetController {
 	
 	private void addActionListenersToView()
 	{
+		view.addActionListenerToAddButton(new AddButtonActionListener(this));
 		view.addActionListenerToRemoveButton(new RemoveButtonActionListener());
 		view.addActionListenerToAdoptButton(new AdoptButtonActionListener());
 		view.addActionListenerToDetailsButton(new DetailsButtonActionListener());
@@ -59,7 +60,21 @@ public class PetController {
 	
 	
 	
-	
+	private class AddButtonActionListener implements ActionListener{
+
+		private PetController parent;
+		public AddButtonActionListener(PetController controller)
+		{
+			parent = controller;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			new PetDetailsController(parent);
+			
+		}
+		
+	}
 	private class AdoptButtonActionListener implements ActionListener{
 
 		@Override
@@ -130,14 +145,9 @@ public class PetController {
 		}
 		
 	}
-	public int getPetDetails(Pet pet) {
-//		PetDetailsView petview = new PetDetailsView();
-//		petview.petName.setText(pet.getName());
-//		//petview.petID.setText(pet.getId()); trouble with casting id to strings.
-//		petview.petSpecies.setText(pet.getSpecies());
-//		petview.petType.setText(pet.getType());
-		//petviewpetAge.setText(pet.getAge()); trouble with casting age to strings.
-		return 0;
+	public void addPet(Pet pet) {
+		pets.add(pet);
+		view.setPetList(pets);
 	}
 	
 }

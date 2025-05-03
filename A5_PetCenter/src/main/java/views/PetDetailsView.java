@@ -1,7 +1,9 @@
 package views;
 
 import java.awt.HeadlessException;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -18,6 +20,7 @@ public class PetDetailsView extends JFrame {
 	public JTextField petType;
 	public JTextField petSpecies;
 	public JTextField petAge;
+	private JButton submitButton;
 
 	public PetDetailsView(Pet pet, boolean isEditable) throws HeadlessException {
 		setTitle("Animal Details Page");
@@ -80,13 +83,20 @@ public class PetDetailsView extends JFrame {
 		
 		if(pet != null)
 		{			
-			setTextFeilds(pet);
+			setTextFields(pet);
+		}
+		
+		if(isEditable)
+		{
+			submitButton = new JButton("Submit");
+			submitButton.setBounds(167, 230, 117, 29);
+			panel.add(submitButton);
 		}
 		
 		this.setVisible(true);
 	}
 	
-	public void setTextFeilds(Pet pet)
+	public void setTextFields(Pet pet)
 	{
 		petName.setText(pet.getName());
 		petID.setText(Integer.toString(pet.getId()));
@@ -96,5 +106,29 @@ public class PetDetailsView extends JFrame {
 		
 	}
 	
+	
+	public void addActionListenerToSubmitButton(ActionListener listener) {
+		submitButton.addActionListener(listener);
+	}
+
+	public String getPetName() {
+		return petName.getText();
+	}
+
+	public String getPetID() {
+		return petID.getText();
+	}
+
+	public String getPetType() {
+		return petType.getText();
+	}
+
+	public String getPetSpecies() {
+		return petSpecies.getText();
+	}
+
+	public String getPetAge() {
+		return petAge.getText();
+	}
 
 }
