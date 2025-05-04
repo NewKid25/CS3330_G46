@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -44,7 +42,6 @@ public class PetJsonParser {
             {
             	json += line;
             }
-//            System.out.println(json);
 	    	List<T> animals = gson.fromJson(json, animalListType);
 	    	return animals;
         }

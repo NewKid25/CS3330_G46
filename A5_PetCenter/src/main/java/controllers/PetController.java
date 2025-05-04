@@ -2,16 +2,9 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
-import models.ExoticAnimal;
-import models.NormalAnimal;
+
 import models.Pet;
 import models.Shelter;
 import services.PetJsonParser;
