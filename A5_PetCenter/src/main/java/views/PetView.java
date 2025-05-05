@@ -76,8 +76,8 @@ public class PetView extends JFrame {
 		adoptLabel.setBounds(37, 18, 150, 16);
 		panel.add(adoptLabel);
 		
-		String[] dropdown = {"Sort by","id", "name", "type", "species", "age"};
-		comboBox = new JComboBox(dropdown);
+		String[] dropdown = {"Sort by", "id", "name","type", "species", "age"};
+		comboBox = new JComboBox<String>(dropdown);
 		comboBox.setToolTipText("");
 		comboBox.setBounds(199, 6, 98, 27);
 		panel.add(comboBox); 
@@ -162,5 +162,10 @@ public class PetView extends JFrame {
 	 */
 	public int[] getSelectedPetsIndices() {
 		return adoptList.getSelectedIndices();
+	}
+	
+	public String getSelectedSortType()
+	{
+		return (String) comboBox.getSelectedItem();
 	}
 }
