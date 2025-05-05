@@ -177,6 +177,9 @@ public class PetController {
 			else if(sortType.equalsIgnoreCase("id")) {
 				pets.sort(new PetComparatorById());
 			}
+			else if(sortType.equalsIgnoreCase("sort by")) {
+				return;
+			}
 			else {
 				new ErrorMessageView("Invalid sort attempted");
 			}
