@@ -16,6 +16,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.event.PopupMenuListener;
+import javax.swing.event.PopupMenuEvent;
 
 public class PetView extends JFrame {
 	private JPanel panel;
@@ -26,6 +29,7 @@ public class PetView extends JFrame {
 	public JList<Pet> adoptList;
 	private JButton saveButton;
 	private JLabel adoptLabel;
+	private JComboBox comboBox;
 
 	
 	public PetView(List<Pet> petList) {
@@ -69,6 +73,12 @@ public class PetView extends JFrame {
 		adoptLabel.setBounds(37, 18, 150, 16);
 		panel.add(adoptLabel);
 		
+		String[] dropdown = {"Sort by","id", "name", "type", "species", "age"};
+		comboBox = new JComboBox(dropdown);
+		comboBox.setToolTipText("");
+		comboBox.setBounds(199, 6, 98, 27);
+		panel.add(comboBox); 
+		
 		
 		this.setVisible(true);
 	}
@@ -88,6 +98,9 @@ public class PetView extends JFrame {
 	}
 	public void addActionListenerToSaveButton(ActionListener listener) {
 		saveButton.addActionListener(listener);
+	}
+	public void addActionListenerToComboBox(ActionListener listener) {
+		comboBox.addActionListener(listener);
 	}
 	
 	public ListModel<Pet> getUserList() {

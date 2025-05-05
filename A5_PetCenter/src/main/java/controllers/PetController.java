@@ -3,8 +3,12 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
+import javax.swing.JComboBox;
 
+import models.NormalAnimal;
 import models.Pet;
 import models.Shelter;
 import services.PetJsonParser;
@@ -48,6 +52,7 @@ public class PetController {
 		view.addActionListenerToAdoptButton(new AdoptButtonActionListener());
 		view.addActionListenerToDetailsButton(new DetailsButtonActionListener());
 		view.addActionListenerToSaveButton(new SaveButtonActionListener());
+		view.addActionListenerToComboBox(new ComboBoxActionListener());
 	}
 	
 	
@@ -126,6 +131,39 @@ public class PetController {
 		}
 		
 	}
+	
+	private class ComboBoxActionListener implements ActionListener{
+
+		private static final int Comparator = 0;
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String[] dropdown = {"Sort by","id", "name", "type", "species", "age"};
+			JComboBox p = new JComboBox(dropdown);
+			
+			if(p.getSelectedIndex() == 0) {
+				pets.sort(null);
+			}
+			else if(p.getSelectedIndex() == 1) {
+				pets.sort(null);
+			}
+			else if(p.getSelectedIndex() == 2) {
+				pets.sort(null);
+			}
+			else if(p.getSelectedIndex() == 3) {
+				pets.sort(null);
+			}
+			else if(p.getSelectedIndex() == 4) {
+				pets.sort(null);
+			}
+			else {
+				new ErrorMessageView("Invalid ");
+			}
+			
+		}
+		
+	}
+	
 	private class SaveButtonActionListener implements ActionListener{
 
 		@Override
