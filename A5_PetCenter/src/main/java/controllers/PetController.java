@@ -11,6 +11,10 @@ import javax.swing.JComboBox;
 import models.NormalAnimal;
 import models.Pet;
 import models.Shelter;
+import services.PetComparatorByAge;
+import services.PetComparatorById;
+import services.PetComparatorBySpecies;
+import services.PetComparatorByType;
 import services.PetJsonParser;
 import views.*;
 
@@ -138,28 +142,28 @@ public class PetController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String[] dropdown = {"Sort by","id", "name", "type", "species", "age"};
-			JComboBox p = new JComboBox(dropdown);
 			
-			if(p.getSelectedIndex() == 0) {
-				pets.sort(null);
+			var sortType = view.getSelectedSortType();
+			
+			if(sortType.equalsIgnoreCase("name")) {
+				pets.sort(null); //use comparable method
 			}
-			else if(p.getSelectedIndex() == 1) {
-				pets.sort(null);
+			else if(sortType.equalsIgnoreCase("age")) {
+				pets.sort(new PetComparatorByAge());
 			}
-			else if(p.getSelectedIndex() == 2) {
-				pets.sort(null);
+			else if(sortType.equalsIgnoreCase("species")) {
+				pets.sort(new PetComparatorBySpecies());
 			}
-			else if(p.getSelectedIndex() == 3) {
-				pets.sort(null);
+			else if(sortType.equalsIgnoreCase("type")) {
+				pets.sort(new PetComparatorByType());
 			}
-			else if(p.getSelectedIndex() == 4) {
-				pets.sort(null);
+			else if(sortType.equalsIgnoreCase("id")) {
+				pets.sort(new PetComparatorById());
 			}
 			else {
-				new ErrorMessageView("Invalid ");
+				new ErrorMessageView("Invalid sort attempted");
 			}
-			
+			view.setPetList(pets);
 		}
 		
 	}
