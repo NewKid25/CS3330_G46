@@ -21,7 +21,13 @@ public class PetDetailsView extends JFrame {
 	public JTextField petSpecies;
 	public JTextField petAge;
 	private JButton submitButton;
-
+	
+	/**
+	 * sets up the pop-up window for the pet details of a pet selected
+	 * @param pet
+	 * @param isEditable
+	 * @throws HeadlessException
+	 */
 	public PetDetailsView(Pet pet, boolean isEditable) throws HeadlessException {
 		setTitle("Animal Details Page");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -95,7 +101,10 @@ public class PetDetailsView extends JFrame {
 		
 		this.setVisible(true);
 	}
-	
+	/**
+	 * fills in details of pets in the pop-up window
+	 * @param pet
+	 */
 	public void setTextFields(Pet pet)
 	{
 		petName.setText(pet.getName());
@@ -106,27 +115,45 @@ public class PetDetailsView extends JFrame {
 		
 	}
 	
-	
+	/**
+	 * adds listener to submit button
+	 * @param listener
+	 */
 	public void addActionListenerToSubmitButton(ActionListener listener) {
 		submitButton.addActionListener(listener);
 	}
-
+	/**
+	 * gets the pet name
+	 * @return
+	 */
 	public String getPetName() {
 		return petName.getText();
 	}
-
+	/**
+	 * gets the pet id
+	 * @return
+	 */
 	public String getPetID() {
 		return petID.getText();
 	}
-
+	/**
+	 * gets the pet type
+	 * @return
+	 */
 	public String getPetType() {
 		return petType.getText();
 	}
-
+	/**
+	 * gets the pet species
+	 * @return
+	 */
 	public String getPetSpecies() {
 		return petSpecies.getText();
 	}
-
+	/**
+	 * gets the pet age
+	 * @return
+	 */
 	public String getPetAge() {
 		return petAge.getText();
 	}

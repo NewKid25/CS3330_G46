@@ -31,7 +31,10 @@ public class PetView extends JFrame {
 	private JLabel adoptLabel;
 	private JComboBox comboBox;
 
-	
+	/**
+	 * sets up the main window when users start the program
+	 * @param petList
+	 */
 	public PetView(List<Pet> petList) {
 		setTitle("Animal Adaption Page");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -83,30 +86,59 @@ public class PetView extends JFrame {
 		this.setVisible(true);
 	}
 	
-
+	/**
+	 * adds actions listener to add button
+	 * @param listener
+	 */
 	public void addActionListenerToAddButton(ActionListener listener) {
 		addButton.addActionListener(listener);
 	}
+	/**
+	 * adds actions listener to remove button
+	 * @param listener
+	 */
 	public void addActionListenerToRemoveButton(ActionListener listener) {
 		removeButton.addActionListener(listener);
 	}
+	/**
+	 * adds actions listener to adopt button
+	 * @param listener
+	 */
 	public void addActionListenerToAdoptButton(ActionListener listener) {
 		adoptButton.addActionListener(listener);
 	}
+	/**
+	 * adds actions listener to details button
+	 * @param listener
+	 */
 	public void addActionListenerToDetailsButton(ActionListener listener) {
 		detailsButton.addActionListener(listener);
 	}
+	/**
+	 * adds actions listener to save button
+	 * @param listener
+	 */
 	public void addActionListenerToSaveButton(ActionListener listener) {
 		saveButton.addActionListener(listener);
 	}
+	/**
+	 * adds actions listener to combo box
+	 * @param listener
+	 */
 	public void addActionListenerToComboBox(ActionListener listener) {
 		comboBox.addActionListener(listener);
 	}
-	
+	/**
+	 * gets the model
+	 * @return
+	 */
 	public ListModel<Pet> getUserList() {
 		return adoptList.getModel();
 	}
-	
+	/**
+	 * sets up the pet list in the pop-up window
+	 * @param petList
+	 */
 	public void setPetList(List<Pet> petList)
 	{
 		var model = new DefaultListModel<Pet>();
@@ -116,12 +148,18 @@ public class PetView extends JFrame {
 		}
 		adoptList.setModel(model);
 	}
-	
+	/**
+	 * gets selected index of a pet
+	 * @return
+	 */
 	public int getSelectedPetIndex() {
 		System.out.println("Selected user index: " + adoptList.getSelectedIndex());
 		return adoptList.getSelectedIndex();
 	}
-	
+	/**
+	 * gets selected multiple indices of pets selected
+	 * @return
+	 */
 	public int[] getSelectedPetsIndices() {
 		return adoptList.getSelectedIndices();
 	}

@@ -18,7 +18,9 @@ public class PetController {
 	private PetView view;
 	private ArrayList<Pet> pets;
 
-	
+	/**
+	 * adds parser and reads in the animals
+	 */
 	public PetController() {
 		super();
 		
@@ -44,7 +46,9 @@ public class PetController {
 		
 	}
 	
-	
+	/**
+	 * adds action listeners to all gui items
+	 */
 	private void addActionListenersToView()
 	{
 		view.addActionListenerToAddButton(new AddButtonActionListener(this));
@@ -57,7 +61,9 @@ public class PetController {
 	
 	
 	
-	
+	/**
+	 * makes the add button pull up the add new pet screen
+	 */
 	private class AddButtonActionListener implements ActionListener{
 
 		private PetController parent;
@@ -73,6 +79,9 @@ public class PetController {
 		}
 		
 	}
+	/**
+	 * adopts pet when click on button
+	 */
 	private class AdoptButtonActionListener implements ActionListener{
 
 		@Override
@@ -101,6 +110,9 @@ public class PetController {
 		}
 		
 	}
+	/**
+	 * removes pet from list when remove button clicked
+	 */
 	private class RemoveButtonActionListener implements ActionListener{
 
 		@Override
@@ -119,6 +131,9 @@ public class PetController {
 		}
 		
 	}
+	/**
+	 * opens up details window when details button clicked
+	 */
 	private class DetailsButtonActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
@@ -131,7 +146,9 @@ public class PetController {
 		}
 		
 	}
-	
+	/**
+	 * sorts the list based on which dropdown index
+	 */
 	private class ComboBoxActionListener implements ActionListener{
 
 		private static final int Comparator = 0;
@@ -156,14 +173,13 @@ public class PetController {
 			else if(p.getSelectedIndex() == 4) {
 				pets.sort(null);
 			}
-			else {
-				new ErrorMessageView("Invalid ");
-			}
 			
 		}
 		
 	}
-	
+	/**
+	 * Saves to another json file when save button clicked
+	 */
 	private class SaveButtonActionListener implements ActionListener{
 
 		@Override
@@ -175,6 +191,10 @@ public class PetController {
 		}
 		
 	}
+	/**
+	 * adds a pet to the list
+	 * @param pet: pet given by user
+	 */
 	public void addPet(Pet pet) {
 		for(var p : pets)
 		{

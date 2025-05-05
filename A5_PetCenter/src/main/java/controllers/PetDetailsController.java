@@ -12,19 +12,28 @@ public class PetDetailsController {
 	private PetDetailsView view;
 	private PetController petController = null;
 	
+	/**
+	 * Opens up the new window with a controller
+	 * @param controller
+	 */
 	public PetDetailsController(PetController controller)
 	{
 		view = new PetDetailsView(null, true);
 		petController = controller;
 		addActionListenersToView();
 	}
-	
+	/**
+	 * Shows the details of a certain pet selected
+	 * @param pet: pet selected by user
+	 */
 	public PetDetailsController(Pet pet)
 	{
 		view = new PetDetailsView(pet, false);
 		addActionListenersToView();
 	}
-	
+	/**
+	 * adds action listener to submit button
+	 */
 	private void addActionListenersToView()
 	{
 		if(petController != null)
@@ -32,7 +41,9 @@ public class PetDetailsController {
 			view.addActionListenerToSubmitButton(new SubmitButtonActionListener());
 		}
 	}
-	
+	/**
+	 * Submits a new pet to the list when button clicked.
+	 */
 	private class SubmitButtonActionListener implements ActionListener{
 
 		@Override

@@ -7,6 +7,9 @@ import javax.swing.JTextArea;
 
 public class ErrorMessageView extends JFrame {
 	
+	/**
+	 * Pop up error message if error occurs
+	 */
 	public ErrorMessageView (String msg)
 	{
 	
